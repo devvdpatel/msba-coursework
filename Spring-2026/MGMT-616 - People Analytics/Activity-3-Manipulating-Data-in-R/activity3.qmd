@@ -1,0 +1,191 @@
+---
+title: "Activity - Cleaning and Filtering Data in R"
+author: "Dev Patel"
+date: today
+format:
+  html:
+    embed-resources: true
+    toc: true
+editor: visual
+editor_options:
+  chunk_output_type: console
+---
+
+# Overview
+
+In this activity you will practice reading in .csv files, merging them, and then cleaning and filtering data using various R packages and functions. This is a critical step before we can actually analyze our data. This material is covered in Chapter 13 through Chapter 20 of your textbook (rforhr.com). Primarily, we will be using the readr package (for reading and writing .csv files) and the dplyr package for adjusting the data. They are both in the tidyverse set of packages.
+
+## Section 1 - Load Packages & Read in .csv Files
+
+1.  In this activity, you will need to use the tidyverse package. Write and run the code below to load the package from your library.
+
+```{r}
+
+library(tidyverse)
+```
+
+2.  **Read in both csv files.**
+
+```{r}
+
+trainingdata <- read_csv("trainingdata(1).csv", name_repair = "universal")
+ppldata <- read_csv("ppldata(1).csv", name_repair = "universal")
+```
+
+3.  Use the names() function so that the column names from each dataframe are output in your console.
+
+```{r}
+names(trainingdata)
+names(ppldata)
+```
+
+## Section 2 - Joining data files
+
+1.  Use the left_join() function to create a third dataframe.
+
+```{r}
+merged_data <- left_join(ppldata, trainingdata, by = "EmpID")
+```
+
+2.  Use the names() function to see the names of the newly created dataframe.
+
+```{r}
+names(merged_data)
+```
+
+## Section 3 - Filter Rows
+
+1.  Filter the merged dataframe to include only those that had scans per minute of greater than 10, and knowledge scores of 9 and higher.
+
+```{r}
+filtered_data <- merged_data %>%
+  filter(Scans.Per.Minute > 10 & Knowledge >= 9)
+```
+
+## Section 4 - Select Columns
+
+1.  Use the select function with the filtered dataframe to create a new dataframe containing only the columns for ID, email address, scans per minute, and knowledge.
+
+```{r}
+selected_data <- filtered_data %>%
+  select(EmpID, Email, Scans.Per.Minute, Knowledge)
+```
+
+## Section 5 - Write out Filtered Files
+
+1.  Write out a .csv file with the filtered dataframe containing only the employees that met the criteria from Section 3, and containing only the columns specified in Section 4.
+
+```{r}
+write_csv(selected_data, "filtered_top_employees.csv")
+```
+
+2.  Verify that the csv file was created and is now located in the folder where the .QMD file is stored. Was the csv file generated?
+
+Yes, verified. A file titled "filtered_top_employee.csv" was generated in the folder where the .QMD file is stored.
+
+## Section 6 - Mutate & Factors
+
+1.  Change all of the numeric values with the name of the location. 1 = Hayward, 2 = Santa Clara, 3 = San Francisco. Create a new column instead of writing over the original Location column.
+
+```{r}
+merged_data <- merged_data %>%
+  mutate(Location_Name = case_when(
+    Location == 1 ~ "Hayward",
+    Location == 2 ~ "Santa Clara",
+    Location == 3 ~ "San Francisco"
+  ))
+```
+
+2.  Insert the code to run the names() function to view the names of your columns.
+
+```{r}
+names(merged_data)
+```
+
+I clicked on the dataframe in the global environment and the new Location_Name column is showing the correct location names that match the original numeric Location column.
+
+## Section 7 - Mutate - Case_When
+
+1.  Write and run the code using mutate and case_when to create a new variable for scans per minute categories (under 6 - Needs Improvement, 6 to 10 - adequate, and over 10 - top performer).
+
+```{r}
+merged_data <- merged_data %>%
+  mutate(Scans_Category = case_when(
+    Scans.Per.Minute < 6 ~ "Needs Improvement",
+    Scans.Per.Minute >= 6 & Scans.Per.Minute <= 10 ~ "Adequate",
+    Scans.Per.Minute > 10 ~ "Top Performer"
+  ))
+```
+
+2.  Write and run the code using mutate and case_when to create a new variable for knowledge categories (under 7 - needs improvement, 7 to 9 - adequate, over 9 - top performer).
+
+```{r}
+merged_data <- merged_data %>%
+  mutate(Knowledge_Category = case_when(
+    Knowledge < 7 ~ "Needs Improvement",
+    Knowledge >= 7 & Knowledge <= 9 ~ "Adequate",
+    Knowledge > 9 ~ "Top Performer"
+  ))
+```
+
+3.  Use the names() function to print out the names of all of the columns in your dataframe.
+
+```{r}
+names(merged_data)
+```
+
+4.  Click on the new dataframe with the 2 additional variables. Compare the categories listed in the new columns with the numeric data from the original columns to ensure that the categories were properly created.
+
+5.  Were the categories created properly?
+
+Yes, the categories were created properly,
+
+## Section 8 - Change To a Factor
+
+1.  Create a new variable which will be a factor for the scans per minute variable.
+
+```{r}
+merged_data <- merged_data %>%
+  mutate(Scans_Factor = factor(Scans_Category,
+                               levels = c("Needs Improvement", "Adequate", "Top                                                Performer")))
+```
+
+2.  Check the structure of your new variable, is it a factor?
+
+```{r}
+str(merged_data$Scans_Factor)
+```
+
+Yes, it is a factor with 3 levels.
+
+3.  Create a new variable which will be a factor for the knowledge variable.
+
+```{r}
+merged_data <- merged_data %>%
+  mutate(Knowledge_Factor = factor(Knowledge_Category,
+                                   levels = c("Needs Improvement", "Adequate", "Top Performer")))
+```
+
+4.  Check the structure of your new variable, is it a factor?
+
+```{r}
+str(merged_data$Knowledge_Factor)
+```
+
+Yes, it is also a factor with 3 levels.
+
+## Section 9 - Write Out New CSV file
+
+1.  Now write out the dataframe which contains all of the mutations (Sections 6-8).
+
+```{r}
+write_csv(merged_data, "activity3_merged_data.csv")
+```
+
+2.  Verify that the csv file was created and is now located in the folder where the .QMD file is stored. Was the csv file generated?
+
+Yes, a csv file titled "activity3_merged_data.csv" was generated with all the changes.
+
+## Feedback and Points of Difficulty
+
+The tidyverse cheat sheets and the rforhr.com textbook were the most helpful resources for completing this activity. The most challenging part was getting the column names right after using name_repair since spaces get replaced with periods. The mutate and case_when steps were straightforward once I understood the syntax. Overall the instructions were clear and easy to follow.
