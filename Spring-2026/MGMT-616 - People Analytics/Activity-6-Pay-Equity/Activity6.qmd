@@ -1,0 +1,123 @@
+---
+title: "Activity on Pay Equity & Regression"
+author: "Dev Patel"
+execute:
+  echo: false
+  warning: false
+  message: false
+format: 
+  pdf:
+    toc: true
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+# Overview
+
+In this activity you will be evaluating the pay equity of starting salaries offered to employees. Keep in mind pay discrimination can occur at any point, so you would want to further evaluate differences in merit pay increases and promotional pay increases.
+
+# Section 1 - Loading Packages & Data
+
+1.  In this tutorial, you will be using the tidyverse package. Write and run the code to load tidyverse from your library.
+
+    ```{r}
+    library(tidyverse)
+    ```
+
+2.  Load the paydata.csv file from canvas. Note, this is the paydata.csv file [**not**]{.underline} the practicepaydata.csv file.
+
+    ```{r}
+    paydata <- read_csv("paydata.csv", name_repair = "universal")
+
+    ```
+
+# Section 2 - Creating Factors
+
+1.  Write and run the code to create a factor for sex which replaces M with Male and F with Female.
+
+    ```{r}
+    paydata <- paydata %>%
+      mutate(sex_factor = factor(Sex,
+                                 levels = c("M", "F"),
+                                 labels = c("Male", "Female")))
+    ```
+
+2.  Write and run the code to create a factor education. The education categories are "High School", "BA.BS", "MA.MS", and "Ph.D.". For our purposes, leave this as an unordered factor **(do not add ordered = T)**. I will review this in class.
+
+    ```{r}
+    paydata <- paydata %>%
+      mutate(education_factor = factor(Education,
+                                       levels = c("High School", "BA.BS",
+                                                  "MA.MS", "Ph.D.")))
+    ```
+
+# Section 3 - Filter
+
+1.  Create a new dataframe for only software engineers "Software Eng".
+
+    ```{r}
+    software_eng <- paydata %>%
+      filter(Department == "Software Eng")
+    ```
+
+2.  Further filter the dataframe to include only those in at Job Level =1.
+
+    ```{r}
+    software_eng_l1 <- software_eng %>%
+      filter(Job.Level == 1)
+    ```
+
+3.  Use this dataframe for the remainder of your analyses (if you want to combine the filter for software engineer and job level 1 into one set of code, that is perfectly okay).
+
+# Section 4 - Regression Analyses
+
+1.  Conduct a regression to evaluate differences in starting pay based on sex.
+
+    ```{r}
+    model1 <- lm(Pay ~ sex_factor, data = software_eng_l1)
+    summary(model1)
+    ```
+
+2.  Write the interpretation of your findings.
+
+    After running a simple linear regression model to evaluate differences in starting pay based on sex, we notice that the overall model is statistically significant. F(1, 148) = 20.17, p \< .001, explains 12% of the variance in pay (R² = 0.120). Sex was a significant predictor of pay (β = -7,510, p \< .001), indicating that female Software Engineers at Job Level 1 earned significantly less than their male counterparts on average. It would be interesting to further dig deep into these results.
+
+3.  What is the average differences in pay between male and female employees? Just type in the dollar amount.
+
+    The average differences in pay between male and female employees is \$7510.
+
+4.  Choose one variable that could A) influence pay and B) is legally allowed to influence pay. Create a second regression analysis with that **additional factor added to the regression model.**
+
+    ```{r}
+    model2 <- lm(Pay ~ sex_factor + education_factor, data = software_eng_l1)
+    summary(model2)
+    ```
+
+5.  Write the interpretation of your findings.
+
+    The overall model was statistically significant, F(4, 145) = 27.95, p \< .001, and explained 43.5% of the variance in pay (R² = 0.435). This was a clear improvement over the sex-only model. After accounting for education, sex was still a significant predictor of pay (β = -5,326, p \< .001). In practical terms, female employees earned about \$5,326 less than male employees with the same education level.
+
+    Education was also a significant predictor of pay. Compared with employees whose highest level of education was a high school diploma, employees with a BA or BS earned \$11,082 more, those with an MA or MS earned \$15,438 more, and those with a Ph.D. earned \$26,351 more.
+
+    Education explains part of the pay gap, lowering the estimated difference from \$7,510 to \$5,326. However, the remaining difference by sex is still statistically significant, which suggests that pay equity remains a concern.
+
+6.  Choose one additional variable **(3 predictors total now)** that could A) influence pay and B) is allowed to influence pay. Create a third regression analysis with that additional factor added to the regression model.
+
+    ```{r}
+    model3 <- lm(Pay ~ sex_factor + education_factor + Performance.Score,
+                 data = software_eng_l1)
+    summary(model3)
+    ```
+
+7.  Write your interpretation.
+
+    A multiple regression showed that the overall model was statistically significant, F(5, 144) = 22.53, p \< .001, and explained 43.9% of the variance in pay (R² = 0.439). This was only a small improvement over the previous model.
+
+    After controlling for education and performance score, sex remained a significant predictor of pay (β = -5,424, p \< .001). Female employees earned about \$5,424 less than male employees with similar education and performance scores. Education remained a strong predictor, while performance score was not significant (β = 830, p = 0.341).
+
+    Overall, the sex-based pay gap persisted even after accounting for education and performance, suggesting continued concerns about pay equity.
+
+# Section 5 - Summary and Recommendations
+
+Provide a brief overview of your findings and list 3 potential recommendations for further evaluation or changes.
