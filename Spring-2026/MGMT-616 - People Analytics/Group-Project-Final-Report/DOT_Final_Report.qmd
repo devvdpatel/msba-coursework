@@ -1,0 +1,429 @@
+---
+title: "Performance Confidence at the U.S. Department of Transportation"
+subtitle: "An Analysis of the 2023 Federal Employee Viewpoint Survey"
+author: "Dev Patel"
+date: today
+execute:
+  echo: true
+  warning: false
+  message: false
+format:
+  html:
+    embed-resources: true
+    toc: true
+    toc-depth: 3
+    code-fold: show
+    number-sections: true
+editor: visual
+editor_options:
+  chunk_output_type: console
+---
+
+**MGMT 616 - People Analytics**\
+**Dr. Grant Brady**\
+**Spring 2026**
+
+# Executive Summary
+
+The Department of Transportation collected 20,624 valid responses in the 2023 Federal Employee Viewpoint Survey. This project asks what predicts the Performance Confidence Index, the FEVS measure of how employees rate their own work unit's output: meeting customer needs, contributing to agency performance, producing high-quality work, and adapting to changing priorities. I tested four questions:
+
+-   **H1.** Does Intrinsic Work Experience predict Performance Confidence?
+-   **H2.** Does Performance Feedback predict Performance Confidence?
+-   **RQ1.** Do supervisors and non-supervisors at DOT differ on Performance Confidence?
+-   **RQ2.** After accounting for federal tenure, does work-unit Innovation add explanatory power?
+
+## Findings
+
+Intrinsic Work Experience predicts Performance Confidence positively and strongly (β = 0.52, R² = 0.27). Employees who find meaning, clarity, and personal accomplishment in their work also rate their unit's performance higher.
+
+Performance Feedback shows nearly the same effect size (β = 0.51, R² = 0.27). Where supervisors deliver clear, recurring feedback, employees report higher Performance Confidence.
+
+Supervisors and non-supervisors report essentially identical Performance Confidence (M = 4.33 vs. 4.35 on a 5-point scale; Cohen's d = 0.04). The p-value crosses .05 only because the DOT sample is large; the substantive gap is below any practical threshold.
+
+Work-unit Innovation is the strongest predictor in the project (β = 0.65). Adding it to a tenure-only model raises R² from approximately 0.001 to 0.427, an increase of roughly 43 percentage points of explained variance. Federal tenure on its own carries almost no signal.
+
+## Recommendations
+
+**Recommendation 1.** Pilot a sub-agency work-unit innovation program in FAA and FHWA. Innovation carries more weight than feedback, intrinsic experience, and tenure combined.
+
+**Recommendation 2.** Build out supervisor feedback systems across DOT: required monthly 1:1s, training on constructive feedback, and inclusion of feedback quality in supervisor performance plans. A cheaper lever than the innovation program with nearly the same predictive weight.
+
+**Recommendation 3.** De-prioritize supervisor versus non-supervisor comparisons in FEVS action planning. The 0.028-point gap is statistically detectable only because of sample size; chasing it would burn resources that belong on the innovation and feedback levers.
+
+**Why it matters.** Performance Confidence reads how employees evaluate their own unit's output. Where it's low, downstream performance and retention tend to follow. The three levers identified above all sit under DOT management control and can be acted on without legislative or budget-process changes.
+
+# Introduction
+
+The Department of Transportation runs nine sub-agencies: the Federal Aviation Administration, Federal Highway Administration, Federal Motor Carrier Safety Administration, Federal Railroad Administration, Federal Transit Administration, Maritime Administration, NHTSA, PHMSA, and the Office of the Secretary. All nine share one statutory mission of safe and efficient national transportation, but each operates a different mix of regulation, grant-making, direct operation, and oversight (U.S. Department of Transportation, 2023). The Federal Employee Viewpoint Survey (FEVS) is one of the few data sources that reads the same constructs across all of them every year.
+
+The 2023 FEVS, administered by the U.S. Office of Personnel Management, received 20,624 valid responses from DOT employees (OPM, 2023). Among the FEVS indices, the Performance Confidence Index is the one designed to measure employee perceptions of output rather than climate or leadership. It averages four items: whether employees in the work unit meet customer needs (Q20), contribute positively to agency performance (Q21), produce high-quality work (Q22), and adapt to changing priorities (Q23).
+
+This project treats Performance Confidence as the outcome and asks what employee-experience factors predict it within DOT. The four tests cover three levels of the employee experience: the intrinsic job (H1), the supervisory relationship (H2 and RQ1), and the work-unit environment (RQ2). The goal is to identify which lever DOT leadership should pull first if it wants to move Performance Confidence in the next FEVS cycle.
+
+# Hypotheses and Research Questions
+
+## Hypothesis 1: Intrinsic Work Experience
+
+Intrinsic motivation theory holds that employees who experience meaning, mastery, and purpose at work invest more discretionary effort in their performance (Deci & Ryan, 2000). In federal-employee samples specifically, intrinsic experience correlates with engagement, satisfaction, and unit-level performance perceptions (Fernandez & Moldogaziev, 2011). The Intrinsic Work Experience subindex of the FEVS Employee Engagement Index covers this construct directly: encouragement to come up with better ways of doing things (Q2), feeling of personal accomplishment (Q3), clarity of role (Q4), use of talents (Q6), and connection between work and agency goals (Q7).
+
+> **H1:** Within DOT, higher Intrinsic Work Experience (Q2, Q3, Q4, Q6, Q7) will be positively associated with Performance Confidence (Q20-Q23).
+
+## Hypothesis 2: Performance Feedback
+
+Feedback is one of the most reliably supported levers in performance management. Meta-analytic evidence shows that recurring, task-focused feedback raises both individual performance and the recipient's confidence in their own and their unit's output (Kluger & DeNisi, 1996; Anseel, Beatty, Shen, Lievens, & Sackett, 2015). The Performance Feedback dimension on the FEVS covers clarity of how well one is doing (Q12), constructive suggestions from supervisors (Q55), and feedback throughout the year (Q56).
+
+> **H2:** Within DOT, higher Performance Feedback (Q12, Q55, Q56) will be positively associated with Performance Confidence.
+
+## Research Question 1: Supervisor vs. Non-Supervisor
+
+Supervisors and non-supervisors see different slices of the same work unit. Supervisors carry direct accountability for unit output, which could inflate their reports of unit performance (because they're invested in the answer) or deflate them (because they have visibility into shortfalls that frontline staff don't). Prior public-management research is mixed on which direction predominates (Meier & O'Toole, 2009). I treat this as an open question rather than a directional prediction.
+
+> **RQ1:** Do supervisors and non-supervisors at DOT differ in Performance Confidence?
+
+## Research Question 2: Multi-Predictor Model with Tenure and Innovation
+
+Longer-tenured employees often anchor differently on rating scales than newer staff, so federal tenure (DFEDTEN) is a standard control. The question is whether work-unit Innovation, the Agile: Innovation dimension on the FEVS, predicts Performance Confidence over and above tenure. The Innovation composite captures commitment of resources to new ideas (Q27), the unit's search for improvement (Q29), incorporation of new ideas (Q30), and management encouragement of innovation (Q64). Hülsheger, Anderson, and Salgado (2009) report strong meta-analytic links between innovation climate and unit performance.
+
+> **RQ2:** After accounting for federal tenure (DFEDTEN), does work-unit Innovation (Q27, Q29, Q30, Q64) predict Performance Confidence within DOT?
+
+# Analytic Strategy
+
+I pulled the 2023 FEVS public-use file and restricted it to respondents whose agency code was TD (Department of Transportation), yielding 20,624 cases. Letter codes "X" (Do Not Know or No Basis to Judge) and "Y" (Not Applicable) were read as missing on load. Composite variables were built as row-wise means of the items listed on the OPM Survey Items codebook page. Five demographic variables (DSEX, DAGEGRP, DRNO, DFEDTEN, DSUPER) were recoded as labeled factors.
+
+Each hypothesis and research question was tested with a linear regression. For RQ1, where the predictor has two groups, I report Welch's two-sample t-test alongside the regression so the substantive size of the gap is visible. For RQ2 I ran a sequential model comparison: a tenure-only regression followed by a tenure-plus-Innovation regression, with an F-test on the change in residual sum of squares to isolate Innovation's incremental contribution.
+
+A note on inference at this sample size. DOT's analytic sample exceeds 19,000 cases in every model. At that n, almost any non-zero relationship will produce p \< .001. The substantive evidence in this paper sits in unstandardized coefficients with 95% confidence intervals, standardized betas, R², and (for Research Question 1) Cohen's d. P-values appear for completeness; I don't lean on them to characterize importance.
+
+## Setup
+
+```{r setup}
+library(tidyverse)
+library(broom)
+library(gtsummary)
+library(effectsize)
+library(performance)
+library(scales)
+library(knitr)
+
+theme_set(theme_minimal(base_size = 12))
+
+df <- read_csv("Clean DOT Data.csv", na = c("", "NA")) %>%
+  mutate(
+    SupervisorF = factor(SupervisorF, levels = c("Non-Supervisor", "Supervisor")),
+    TenureF     = factor(TenureF,     levels = c("≤10 years", "11–20 years", ">20 years")),
+    SexF        = factor(SexF,        levels = c("Male", "Female")),
+    AgeF        = factor(AgeF,        levels = c("Under 40", "40 or Older")),
+    RaceF       = factor(RaceF)
+  )
+```
+
+# Results
+
+## Descriptive Statistics
+
+The 20,624 DOT respondents in the 2023 FEVS reported a mean Performance Confidence of 4.34 (SD = 0.68) on a 5-point scale. All four composites cluster at the high end of the scale, with Innovation showing the widest spread (SD = 0.91). Table 1 reports descriptives.
+
+```{r sample}
+df %>%
+  summarise(
+    `Total Respondents`      = n(),
+    `Mean Performance Conf.` = round(mean(PerfConfidence, na.rm = TRUE), 2),
+    `SD Performance Conf.`   = round(sd(PerfConfidence,   na.rm = TRUE), 2)
+  ) %>% kable()
+```
+
+### Demographic breakdown
+
+```{r demo-table}
+demo_tbl <- df %>%
+  select(SexF, AgeF, RaceF, TenureF, SupervisorF) %>%
+  tbl_summary(
+    label = list(
+      SexF        ~ "Sex",
+      AgeF        ~ "Age Group",
+      RaceF       ~ "Race",
+      TenureF     ~ "Federal Tenure",
+      SupervisorF ~ "Supervisory Status"
+    ),
+    missing_text = "Missing"
+  )
+
+demo_tbl
+```
+
+### Variable summary (means, SDs)
+
+**Table 1.** Descriptive statistics for analysis variables (DOT, FEVS 2023).
+
+```{r var-summary}
+var_summary <- df %>%
+  select(PerfConfidence, IntrinsicWE, PerfFeedback, Innovation) %>%
+  pivot_longer(everything(), names_to = "Variable", values_to = "value") %>%
+  group_by(Variable) %>%
+  summarise(
+    n    = sum(!is.na(value)),
+    Mean = round(mean(value, na.rm = TRUE), 2),
+    SD   = round(sd(value,   na.rm = TRUE), 2),
+    Min  = round(min(value,  na.rm = TRUE), 2),
+    Max  = round(max(value,  na.rm = TRUE), 2)
+  )
+
+kable(var_summary, caption = "Table 1. Descriptive statistics for analysis variables (DOT, FEVS 2023).")
+```
+
+Table 2 reports pairwise Pearson correlations among the four composites. Performance Confidence correlates most strongly with Innovation (r = .65) and somewhat less with Intrinsic Work Experience and Performance Feedback (r = .52 and r = .51). The three predictors correlate with each other at r = .66 to .71, which is high. Their effects on Performance Confidence in the single-predictor H1 and H2 models therefore include shared variance with Innovation and with each other. I return to this point in the Limitations.
+
+**Table 2.** Pearson correlations among analysis variables.
+
+```{r corr}
+cor_mat <- df %>%
+  select(PerfConfidence, IntrinsicWE, PerfFeedback, Innovation) %>%
+  cor(use = "pairwise.complete.obs") %>%
+  round(2)
+
+kable(cor_mat, caption = "Table 2. Pearson correlations among analysis variables.")
+```
+
+The DOT sample is 22% supervisors and 78% non-supervisors among those who answered the supervisory status item (Supervisors n = 4,320; Non-Supervisors n = 15,158; Missing n = 1,146). Federal tenure is roughly evenly distributed across the three bands (≤10 years: n = 6,532; 11-20 years: n = 6,689; \>20 years: n = 6,188; Missing: n = 1,215).
+
+## Hypothesis 1: Intrinsic Work Experience Predicts Performance Confidence
+
+Intrinsic Work Experience was a strong positive predictor of Performance Confidence, B = 0.413, 95% CI \[0.403, 0.422\], SE = 0.005, t(20,222) = 85.80, p \< .001. Each one-point rise in Intrinsic Work Experience predicts roughly a 0.41-point rise in Performance Confidence on the 5-point scale. The standardized coefficient was β = 0.52, 95% CI \[0.50, 0.53\], a medium-to-large effect by Cohen's conventions. The model accounts for 26.7% of the variance in Performance Confidence (R² = 0.267, adjusted R² = 0.267, n = 20,224). **H1 was supported.**
+
+```{r h1}
+m_h1 <- lm(PerfConfidence ~ IntrinsicWE, data = df)
+summary(m_h1)
+tidy(m_h1, conf.int = TRUE) %>% kable(digits = 3)
+glance(m_h1) %>% select(r.squared, adj.r.squared, df, p.value, nobs) %>% kable(digits = 4)
+```
+
+Standardized beta (so the effect is interpretable independent of the 1-5 metric):
+
+```{r h1-std}
+effectsize::standardize_parameters(m_h1)
+```
+
+**Figure 1.** Intrinsic Work Experience and Performance Confidence (DOT, 2023 FEVS).
+
+```{r h1-plot}
+p_h1 <- ggplot(df, aes(IntrinsicWE, PerfConfidence)) +
+  geom_jitter(alpha = 0.08, width = 0.05, height = 0.05) +
+  geom_smooth(method = "lm", se = TRUE, color = "steelblue") +
+  labs(
+    title = "H1: Intrinsic work experience predicts performance confidence",
+    x = "Intrinsic Work Experience (1-5)",
+    y = "Performance Confidence (1-5)"
+  )
+
+p_h1
+```
+
+## Hypothesis 2: Performance Feedback Predicts Performance Confidence
+
+Performance Feedback was also a strong positive predictor, B = 0.402, 95% CI \[0.393, 0.411\], SE = 0.005, t(20,232) = 85.44, p \< .001. Each one-point rise in Performance Feedback predicts roughly a 0.40-point rise in Performance Confidence. The standardized coefficient was β = 0.51, 95% CI \[0.50, 0.53\], nearly identical to H1. The model R² was 0.265 (n = 20,234). **H2 was supported.**
+
+The closeness of the H1 and H2 coefficients is visible in the correlation matrix from Table 2. Intrinsic Work Experience and Performance Feedback correlate at r = .70, so the two predictors share substantial variance. Their independent effects on Performance Confidence cannot be cleanly separated under the single-predictor designs used here.
+
+```{r h2}
+m_h2 <- lm(PerfConfidence ~ PerfFeedback, data = df)
+summary(m_h2)
+tidy(m_h2, conf.int = TRUE) %>% kable(digits = 3)
+glance(m_h2) %>% select(r.squared, adj.r.squared, df, p.value, nobs) %>% kable(digits = 4)
+effectsize::standardize_parameters(m_h2)
+```
+
+**Figure 2.** Performance Feedback and Performance Confidence (DOT, 2023 FEVS).
+
+```{r h2-plot}
+p_h2 <- ggplot(df, aes(PerfFeedback, PerfConfidence)) +
+  geom_jitter(alpha = 0.08, width = 0.05, height = 0.05) +
+  geom_smooth(method = "lm", se = TRUE, color = "darkorange") +
+  labs(
+    title = "H2: Performance feedback predicts performance confidence",
+    x = "Performance Feedback (1-5)",
+    y = "Performance Confidence (1-5)"
+  )
+
+p_h2
+```
+
+## Research Question 1: Supervisors vs. Non-Supervisors
+
+Non-supervisors at DOT averaged 4.354 on Performance Confidence (SD = 0.686, n = 14,845); supervisors averaged 4.325 (SD = 0.665, n = 4,286). The mean difference is 0.028 of a scale point, with non-supervisors slightly higher. Welch's two-sample t-test rejected the null of equal means, t(7,127) = 2.44, p = .015. The regression returned the equivalent coefficient, B = -0.028, 95% CI \[-0.051, -0.005\], p = .017, R² = 0.0003.
+
+Cohen's d was 0.04, 95% CI \[0.01, 0.08\]. The conventional threshold for a "small" effect is d = 0.20, so the DOT supervisor / non-supervisor gap is one-fifth of that. The model accounts for three one-hundredths of one percent of the variance in Performance Confidence.
+
+The substantive answer to RQ1 is that DOT supervisors and non-supervisors report effectively the same level of Performance Confidence. The p-value crosses .05 only because of sample size. Figure 3 shows two distributions that are visually indistinguishable.
+
+```{r rq1-ttest}
+df_rq1 <- df %>% filter(!is.na(SupervisorF))
+
+group_stats <- df_rq1 %>%
+  group_by(SupervisorF) %>%
+  summarise(
+    n    = sum(!is.na(PerfConfidence)),
+    Mean = round(mean(PerfConfidence, na.rm = TRUE), 3),
+    SD   = round(sd(PerfConfidence,   na.rm = TRUE), 3)
+  )
+kable(group_stats, caption = "Performance Confidence by Supervisory Status (DOT).")
+
+t_rq1 <- t.test(PerfConfidence ~ SupervisorF, data = df_rq1)
+t_rq1
+
+d_rq1 <- effectsize::cohens_d(PerfConfidence ~ SupervisorF, data = df_rq1)
+d_rq1
+```
+
+```{r rq1-lm}
+m_rq1 <- lm(PerfConfidence ~ SupervisorF, data = df_rq1)
+summary(m_rq1)
+tidy(m_rq1, conf.int = TRUE) %>% kable(digits = 3)
+```
+
+**Figure 3.** Performance Confidence by supervisory status (DOT, 2023 FEVS).
+
+```{r rq1-plot}
+p_rq1 <- df_rq1 %>%
+  filter(!is.na(PerfConfidence)) %>%
+  ggplot(aes(SupervisorF, PerfConfidence, fill = SupervisorF)) +
+  geom_violin(alpha = 0.5, color = NA) +
+  geom_boxplot(width = 0.15, fill = "white", outlier.alpha = 0.1) +
+  scale_fill_brewer(palette = "Set2", guide = "none") +
+  labs(
+    title = "RQ1: Performance confidence by supervisory status (DOT)",
+    x = NULL,
+    y = "Performance Confidence (1-5)"
+  )
+
+p_rq1
+```
+
+## Research Question 2: Tenure plus Innovation
+
+The full model accounts for 42.7% of the variance in Performance Confidence (R² = 0.427, adjusted R² = 0.426, F(3, 19,032) = 4,719, p \< .001, n = 19,036). Innovation is the strongest standardized effect in the project, β = 0.65, 95% CI \[0.64, 0.66\]. A one-point rise in work-unit Innovation predicts roughly a 0.50-point rise in Performance Confidence after holding tenure constant.
+
+The sequential model comparison makes the story plain. The tenure-only baseline returned R² of approximately 0.001 (residual SS = 8,838.8). Adding Innovation dropped residual SS to 5,075.1, F(1, 19,032) = 14,114, p \< .001. The change in R² was approximately 0.426. Federal tenure alone explains essentially none of the variance in Performance Confidence; Innovation explains nearly half of it.
+
+Among the tenure dummies, employees with 11-20 years of federal service reported slightly lower Performance Confidence than the reference group of ≤10 years, but the standardized effect (β = -0.03) was below any practical threshold. The \>20 years dummy was not significant. Tenure is best read as a control here, not a finding.
+
+**Table 3.** RQ2 regression of Performance Confidence on Tenure and Innovation.
+
+```{r rq2}
+df_rq2 <- df %>% filter(!is.na(TenureF), !is.na(Innovation), !is.na(PerfConfidence))
+
+m_rq2 <- lm(PerfConfidence ~ TenureF + Innovation, data = df_rq2)
+summary(m_rq2)
+tidy(m_rq2, conf.int = TRUE) %>% kable(digits = 3, caption = "Table 3. RQ2 regression of Performance Confidence on Tenure and Innovation.")
+glance(m_rq2) %>% select(r.squared, adj.r.squared, df, p.value, nobs) %>% kable(digits = 4)
+effectsize::standardize_parameters(m_rq2)
+```
+
+Compare a tenure-only model to the full model to isolate Innovation's incremental contribution:
+
+```{r rq2-compare}
+m_rq2_tenureonly <- lm(PerfConfidence ~ TenureF, data = df_rq2)
+anova(m_rq2_tenureonly, m_rq2)
+```
+
+**Figure 4.** Innovation and Performance Confidence by federal tenure (DOT, 2023 FEVS).
+
+```{r rq2-plot}
+p_rq2 <- ggplot(df_rq2, aes(Innovation, PerfConfidence, color = TenureF)) +
+  geom_jitter(alpha = 0.05, width = 0.05, height = 0.05) +
+  geom_smooth(method = "lm", se = FALSE, linewidth = 1) +
+  scale_color_brewer(palette = "Dark2", name = "Federal Tenure") +
+  labs(
+    title = "RQ2: Innovation predicts performance confidence, by tenure (DOT)",
+    x = "Work-Unit Innovation (1-5)",
+    y = "Performance Confidence (1-5)"
+  )
+
+p_rq2
+```
+
+Figure 4 makes the regression visible. The three tenure lines are nearly parallel and nearly overlapping; the Innovation slope is steep and consistent across tenure bands.
+
+## Combined Results Table
+
+```{r combined-results}
+combine_row <- function(model, name) {
+  g <- glance(model)
+  t <- tidy(model) %>% filter(term != "(Intercept)")
+  tibble(
+    Test          = name,
+    Predictor     = paste(t$term, collapse = "; "),
+    `B (unstd.)`  = paste(round(t$estimate, 3),  collapse = "; "),
+    `SE`          = paste(round(t$std.error, 3), collapse = "; "),
+    `p`           = paste(round(t$p.value, 4),   collapse = "; "),
+    `R²`     = round(g$r.squared, 3),
+    `Adj R²` = round(g$adj.r.squared, 3),
+    `df (model, residual)` = paste(g$df, g$df.residual, sep = ", "),
+    n             = g$nobs
+  )
+}
+
+results_tbl <- bind_rows(
+  combine_row(m_h1,  "H1: IntrinsicWE -> PerfConf"),
+  combine_row(m_h2,  "H2: PerfFeedback -> PerfConf"),
+  combine_row(m_rq1, "RQ1: SupervisorF -> PerfConf"),
+  combine_row(m_rq2, "RQ2: TenureF + Innovation -> PerfConf")
+)
+
+kable(results_tbl, caption = "Combined regression results.")
+```
+
+# Interpretation and Recommendations
+
+Three findings carry the project. Work-unit Innovation is the strongest predictor of Performance Confidence in this analysis (β = 0.65, incremental R² ≈ 0.43 over tenure alone). Performance Feedback and Intrinsic Work Experience are strong second-tier predictors (β ≈ 0.51 each in single-predictor form). Supervisor versus non-supervisor status is not a meaningful differentiator at DOT (d = 0.04), and federal tenure is also not meaningful once Innovation enters the model.
+
+Because the three predictor composites correlate at .66 to .71 with each other, they cannot be fully disentangled in a design that fits each in its own model. They all live in the same broader positive-experience space, and Innovation rises to the top within that space.
+
+## Recommendation 1: Pilot a Sub-Agency Work-Unit Innovation Program
+
+Innovation showed the largest standardized effect on Performance Confidence (β = 0.65) and the largest incremental R² (≈ 0.43 over tenure alone). DOT should build a structured work-unit innovation program in two of its sub-agencies, most likely FAA and FHWA given their size and scope, and evaluate effects in the next FEVS cycle.
+
+The Innovation composite is built from four items: commitment of resources to new ideas, search for improvement, adoption of new ideas, and management encouragement of innovation. A program that pulls those four levers in parallel would (a) carve out a small budget pool at the work-unit level for new ideas, around 0.25% of operating budget per unit, returnable to the agency if unused after 18 months; (b) require each work unit to nominate one process-improvement project per year and report on it at the all-hands; (c) train first-line supervisors on idea capture and recognition; and (d) include innovation as a measurable factor in supervisor performance plans.
+
+The meta-analytic literature on workplace innovation climate links these inputs to measured unit performance, not just self-reported perceptions (Hülsheger et al., 2009). The intervention is low-cost relative to alternatives like compensation restructuring or major reorganizations. DOT should track the four FEVS Innovation items separately in the next survey cycle within the two pilot sub-agencies, plus the Performance Confidence Index itself, to gauge whether the program is moving the right needles.
+
+## Recommendation 2: Build Out Supervisor Feedback Systems
+
+Performance Feedback was the second-largest predictor (β = 0.51). The lever is also cheaper to pull than the Innovation program: it's a training and rhythm change for first-line supervisors, not a budget pool. DOT should (a) require documented monthly one-on-ones between every first-line supervisor and direct report within 12 months, (b) train supervisors on the structure of constructive feedback, and (c) include frequency and quality of feedback delivery in the supervisor performance plan template.
+
+The training piece matters as much as the rhythm. Kluger and DeNisi (1996) identify several failure modes that training can prevent: feedback that focuses on the person rather than the task, feedback delivered too long after the work, and feedback without a clear actionable next step. Anseel et al. (2015) report similar patterns in 30 years of feedback-seeking research. The intervention is feasible because supervisor-employee 1:1 cadence is already within manager discretion at most DOT sub-agencies; what's missing is the standardized documentation and training requirement.
+
+DOT should track the three Performance Feedback items (Q12, Q55, Q56) and Performance Confidence in the next FEVS cycle. A measurable shift in feedback items would precede a shift in Performance Confidence.
+
+## Recommendation 3: De-Prioritize Supervisor vs. Non-Supervisor Comparisons
+
+This is a negative recommendation, but it's worth stating clearly. The 0.028-point gap between supervisors and non-supervisors on Performance Confidence is statistically detectable only because DOT has more than 19,000 respondents. Cohen's d is 0.04, and R² is 0.0003. Any HR intervention designed to close the gap would chase noise.
+
+DOT should explicitly de-prioritize this comparison in its FEVS action planning. The supervisor / non-supervisor cut should still be reported in dashboards because it's a standard demographic break, but it shouldn't anchor an intervention or a working group. The resources that would have gone into closing this gap belong on the Innovation and Feedback levers above. This is also a useful reminder for downstream FEVS analyses: at DOT's sample size, almost every demographic break will produce p \< .05, and effect sizes need to be the gate on whether a finding is acted on.
+
+# Limitations
+
+Three caveats. First, the 2023 FEVS is cross-sectional, so the regressions identify associations rather than causal effects. Second, composites are item-level row means rather than IRT-scored factors. This is the standard approach in published FEVS work, but it introduces measurement noise that a latent-variable model would partially absorb.
+
+Third, and most consequentially, the three predictor composites correlate at r = .66 to .71 with each other. Their effects on Performance Confidence overlap substantially. The single-predictor models in H1 and H2 each carry some of the shared variance that the RQ2 multi-predictor model attributes to Innovation. A commonality analysis, or a longitudinal design that tracks whether moving Feedback or Innovation in one cycle precedes movement in Performance Confidence in the next, would clarify how much of Innovation's effect is unique versus shared.
+
+# References
+
+Anseel, F., Beatty, A. S., Shen, W., Lievens, F., & Sackett, P. R. (2015). How are we doing after 30 years? A meta-analytic review of the antecedents and outcomes of feedback-seeking behavior. *Journal of Management, 41*(1), 318-348. https://doi.org/10.1177/0149206313484521
+
+Deci, E. L., & Ryan, R. M. (2000). The "what" and "why" of goal pursuits: Human needs and the self-determination of behavior. *Psychological Inquiry, 11*(4), 227-268. https://doi.org/10.1207/S15327965PLI1104_01
+
+Fernandez, S., & Moldogaziev, T. (2011). Empowering public sector employees to improve performance: Does it work? *American Review of Public Administration, 41*(1), 23-47. https://doi.org/10.1177/0275074009355943
+
+Hülsheger, U. R., Anderson, N., & Salgado, J. F. (2009). Team-level predictors of innovation at work: A comprehensive meta-analysis spanning three decades of research. *Journal of Applied Psychology, 94*(5), 1128-1145. https://doi.org/10.1037/a0015978
+
+Kluger, A. N., & DeNisi, A. (1996). The effects of feedback interventions on performance: A historical review, a meta-analysis, and a preliminary feedback intervention theory. *Psychological Bulletin, 119*(2), 254-284. https://doi.org/10.1037/0033-2909.119.2.254
+
+Meier, K. J., & O'Toole, L. J. (2009). The proverbs of new public management: Lessons from an evidence-based research agenda. *American Review of Public Administration, 39*(1), 4-22. https://doi.org/10.1177/0275074008326113
+
+U.S. Department of Transportation. (2023). About DOT. https://www.transportation.gov/about
+
+U.S. Office of Personnel Management. (2023). 2023 Federal Employee Viewpoint Survey results. https://www.opm.gov/fevs/
+
+# AI Disclosure
+
+Generative AI tools (Claude) were used to assist with debugging R code, formatting regression output tables, and proofreading drafts of this paper. All analytic decisions, model specifications, interpretations of results, and recommendations are my own. The 2023 FEVS data was downloaded directly from OPM and analyzed in R; all statistical outputs reported here were generated and verified by me.
