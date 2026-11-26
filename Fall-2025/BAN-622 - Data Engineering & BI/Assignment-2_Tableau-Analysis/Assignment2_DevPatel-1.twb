@@ -1,0 +1,2410 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20252.25.0818.1050                               -->
+<workbook original-version='18.1' source-build='2025.2.2 (20252.25.0818.1050)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AnimationOnByDefault />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <SingleValuePerNestSorting />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='FactInternetSales (AdventureWorksDW2017)_FactInternetSales' inline='true' name='federated.0ckm5nh1p6wxz31e1fjvs13gqg6i' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='FactInternetSales (AdventureWorksDW2017)_FactInternetSales' name='textscan.1m6a9mm0tu88il162rcwq0d1lnxk'>
+            <connection class='textscan' directory='C:/Users/STSC/Downloads/DW_DataSets/DW_DataSets' filename='FactInternetSales (AdventureWorksDW2017)_FactInternetSales.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation type='collection'>
+          <relation connection='textscan.1m6a9mm0tu88il162rcwq0d1lnxk' name='FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv' table='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales#csv]' type='table'>
+            <columns character-set='UTF-16LE' header='yes' locale='en_US' separator='&#9;'>
+              <column datatype='string' name='Carrier Tracking Number' ordinal='0' />
+              <column datatype='integer' name='Currency Key' ordinal='1' />
+              <column datatype='string' name='Customer PO Number' ordinal='2' />
+              <column datatype='datetime' name='Due Date' ordinal='3' />
+              <column datatype='date' name='Due Date Key' ordinal='4' />
+              <column datatype='integer' name='Employee Key' ordinal='5' />
+              <column datatype='datetime' name='Order Date' ordinal='6' />
+              <column datatype='date' name='Order Date Key' ordinal='7' />
+              <column datatype='integer' name='Product Key' ordinal='8' />
+              <column datatype='integer' name='Promotion Key' ordinal='9' />
+              <column datatype='integer' name='Reseller Key' ordinal='10' />
+              <column datatype='integer' name='Revision Number' ordinal='11' />
+              <column datatype='integer' name='Sales Order Line Number' ordinal='12' />
+              <column datatype='string' name='Sales Order Number' ordinal='13' />
+              <column datatype='integer' name='Sales Territory Key' ordinal='14' />
+              <column datatype='datetime' name='Ship Date' ordinal='15' />
+              <column datatype='date' name='Ship Date Key' ordinal='16' />
+              <column datatype='real' name='Discount Amount' ordinal='17' />
+              <column datatype='real' name='Extended Amount' ordinal='18' />
+              <column datatype='real' name='Freight' ordinal='19' />
+              <column datatype='integer' name='Order Quantity' ordinal='20' />
+              <column datatype='real' name='Product Standard Cost' ordinal='21' />
+              <column datatype='real' name='Sales Amount' ordinal='22' />
+              <column datatype='real' name='Tax Amt' ordinal='23' />
+              <column datatype='real' name='Total Product Cost' ordinal='24' />
+              <column datatype='real' name='Unit Price' ordinal='25' />
+              <column datatype='real' name='Unit Price Discount Pct' ordinal='26' />
+            </columns>
+          </relation>
+          <relation connection='textscan.1m6a9mm0tu88il162rcwq0d1lnxk' name='DimCurrency (AdventureWorksDW2017)_DimCurrency.csv' table='[DimCurrency (AdventureWorksDW2017)_DimCurrency#csv]' type='table'>
+            <columns character-set='UTF-16LE' header='yes' locale='en_US' separator='&#9;'>
+              <column datatype='string' name='Currency Alternate Key' ordinal='0' />
+              <column datatype='integer' name='Currency Key' ordinal='1' />
+              <column datatype='string' name='Currency Name' ordinal='2' />
+            </columns>
+          </relation>
+          <relation connection='textscan.1m6a9mm0tu88il162rcwq0d1lnxk' name='DimDate (AdventureWorksDW2017)_DimDate.csv' table='[DimDate (AdventureWorksDW2017)_DimDate#csv]' type='table'>
+            <columns character-set='UTF-16LE' header='yes' locale='en_US' separator='&#9;'>
+              <column datatype='integer' name='Calendar Quarter' ordinal='0' />
+              <column datatype='integer' name='Calendar Year' ordinal='1' />
+              <column datatype='date' name='Date Key' ordinal='2' />
+              <column datatype='integer' name='Day Number Of Month' ordinal='3' />
+              <column datatype='integer' name='Day Number Of Week' ordinal='4' />
+              <column datatype='integer' name='Day Number Of Year' ordinal='5' />
+              <column datatype='string' name='English Day Name Of Week' ordinal='6' />
+              <column datatype='string' name='English Month Name' ordinal='7' />
+              <column datatype='integer' name='Fiscal Quarter' ordinal='8' />
+              <column datatype='integer' name='Fiscal Year' ordinal='9' />
+              <column datatype='string' name='French Day Name Of Week' ordinal='10' />
+              <column datatype='string' name='French Month Name' ordinal='11' />
+              <column datatype='date' name='Full Date Alternate Key' ordinal='12' />
+              <column datatype='integer' name='Month Number Of Year' ordinal='13' />
+              <column datatype='string' name='Spanish Day Name Of Week' ordinal='14' />
+              <column datatype='string' name='Spanish Month Name' ordinal='15' />
+              <column datatype='integer' name='Week Number Of Year' ordinal='16' />
+              <column datatype='integer' name='Calendar Semester' ordinal='17' />
+              <column datatype='integer' name='Fiscal Semester' ordinal='18' />
+            </columns>
+          </relation>
+          <relation connection='textscan.1m6a9mm0tu88il162rcwq0d1lnxk' name='DimReseller (AdventureWorksDW2017)_DimReseller.csv' table='[DimReseller (AdventureWorksDW2017)_DimReseller#csv]' type='table'>
+            <columns character-set='UTF-16LE' header='yes' locale='en_US' separator='&#9;'>
+              <column datatype='string' name='AddressLine1' ordinal='0' />
+              <column datatype='string' name='AddressLine2' ordinal='1' />
+              <column datatype='string' name='Bank Name' ordinal='2' />
+              <column datatype='string' name='Business Type' ordinal='3' />
+              <column datatype='integer' name='First Order Year' ordinal='4' />
+              <column datatype='integer' name='Geography Key' ordinal='5' />
+              <column datatype='integer' name='Last Order Year' ordinal='6' />
+              <column datatype='string' name='Order Frequency' ordinal='7' />
+              <column datatype='integer' name='Order Month' ordinal='8' />
+              <column datatype='string' name='Phone' ordinal='9' />
+              <column datatype='string' name='Product Line' ordinal='10' />
+              <column datatype='string' name='Reseller Alternate Key' ordinal='11' />
+              <column datatype='integer' name='Reseller Key' ordinal='12' />
+              <column datatype='string' name='Reseller Name' ordinal='13' />
+              <column datatype='integer' name='Year Opened' ordinal='14' />
+              <column datatype='integer' name='Annual Revenue' ordinal='15' />
+              <column datatype='integer' name='Annual Sales' ordinal='16' />
+              <column datatype='integer' name='Min Payment Amount' ordinal='17' />
+              <column datatype='integer' name='Min Payment Type' ordinal='18' />
+              <column datatype='integer' name='Number Employees' ordinal='19' />
+            </columns>
+          </relation>
+          <relation connection='textscan.1m6a9mm0tu88il162rcwq0d1lnxk' name='DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv' table='[DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory#csv]' type='table'>
+            <columns character-set='UTF-16LE' header='yes' locale='en_US' separator='&#9;'>
+              <column datatype='integer' name='Sales Territory Alternate Key' ordinal='0' />
+              <column datatype='string' name='Sales Territory Country' ordinal='1' />
+              <column datatype='string' name='Sales Territory Group' ordinal='2' />
+              <column datatype='string' name='Sales Territory Image' ordinal='3' />
+              <column datatype='integer' name='Sales Territory Key' ordinal='4' />
+              <column datatype='string' name='Sales Territory Region' ordinal='5' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[AddressLine1]' value='[DimReseller (AdventureWorksDW2017)_DimReseller.csv].[AddressLine1]' />
+          <map key='[AddressLine2]' value='[DimReseller (AdventureWorksDW2017)_DimReseller.csv].[AddressLine2]' />
+          <map key='[Annual Revenue]' value='[DimReseller (AdventureWorksDW2017)_DimReseller.csv].[Annual Revenue]' />
+          <map key='[Annual Sales]' value='[DimReseller (AdventureWorksDW2017)_DimReseller.csv].[Annual Sales]' />
+          <map key='[Bank Name]' value='[DimReseller (AdventureWorksDW2017)_DimReseller.csv].[Bank Name]' />
+          <map key='[Business Type]' value='[DimReseller (AdventureWorksDW2017)_DimReseller.csv].[Business Type]' />
+          <map key='[Calendar Quarter]' value='[DimDate (AdventureWorksDW2017)_DimDate.csv].[Calendar Quarter]' />
+          <map key='[Calendar Semester]' value='[DimDate (AdventureWorksDW2017)_DimDate.csv].[Calendar Semester]' />
+          <map key='[Calendar Year]' value='[DimDate (AdventureWorksDW2017)_DimDate.csv].[Calendar Year]' />
+          <map key='[Carrier Tracking Number]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Carrier Tracking Number]' />
+          <map key='[Currency Alternate Key]' value='[DimCurrency (AdventureWorksDW2017)_DimCurrency.csv].[Currency Alternate Key]' />
+          <map key='[Currency Key (DimCurrency (AdventureWorksDW2017)_DimCurrency.csv)]' value='[DimCurrency (AdventureWorksDW2017)_DimCurrency.csv].[Currency Key]' />
+          <map key='[Currency Key]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Currency Key]' />
+          <map key='[Currency Name]' value='[DimCurrency (AdventureWorksDW2017)_DimCurrency.csv].[Currency Name]' />
+          <map key='[Customer PO Number]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Customer PO Number]' />
+          <map key='[Date Key]' value='[DimDate (AdventureWorksDW2017)_DimDate.csv].[Date Key]' />
+          <map key='[Day Number Of Month]' value='[DimDate (AdventureWorksDW2017)_DimDate.csv].[Day Number Of Month]' />
+          <map key='[Day Number Of Week]' value='[DimDate (AdventureWorksDW2017)_DimDate.csv].[Day Number Of Week]' />
+          <map key='[Day Number Of Year]' value='[DimDate (AdventureWorksDW2017)_DimDate.csv].[Day Number Of Year]' />
+          <map key='[Discount Amount]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Discount Amount]' />
+          <map key='[Due Date Key]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Due Date Key]' />
+          <map key='[Due Date]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Due Date]' />
+          <map key='[Employee Key]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Employee Key]' />
+          <map key='[English Day Name Of Week]' value='[DimDate (AdventureWorksDW2017)_DimDate.csv].[English Day Name Of Week]' />
+          <map key='[English Month Name]' value='[DimDate (AdventureWorksDW2017)_DimDate.csv].[English Month Name]' />
+          <map key='[Extended Amount]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Extended Amount]' />
+          <map key='[First Order Year]' value='[DimReseller (AdventureWorksDW2017)_DimReseller.csv].[First Order Year]' />
+          <map key='[Fiscal Quarter]' value='[DimDate (AdventureWorksDW2017)_DimDate.csv].[Fiscal Quarter]' />
+          <map key='[Fiscal Semester]' value='[DimDate (AdventureWorksDW2017)_DimDate.csv].[Fiscal Semester]' />
+          <map key='[Fiscal Year]' value='[DimDate (AdventureWorksDW2017)_DimDate.csv].[Fiscal Year]' />
+          <map key='[Freight]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Freight]' />
+          <map key='[French Day Name Of Week]' value='[DimDate (AdventureWorksDW2017)_DimDate.csv].[French Day Name Of Week]' />
+          <map key='[French Month Name]' value='[DimDate (AdventureWorksDW2017)_DimDate.csv].[French Month Name]' />
+          <map key='[Full Date Alternate Key]' value='[DimDate (AdventureWorksDW2017)_DimDate.csv].[Full Date Alternate Key]' />
+          <map key='[Geography Key]' value='[DimReseller (AdventureWorksDW2017)_DimReseller.csv].[Geography Key]' />
+          <map key='[Last Order Year]' value='[DimReseller (AdventureWorksDW2017)_DimReseller.csv].[Last Order Year]' />
+          <map key='[Min Payment Amount]' value='[DimReseller (AdventureWorksDW2017)_DimReseller.csv].[Min Payment Amount]' />
+          <map key='[Min Payment Type]' value='[DimReseller (AdventureWorksDW2017)_DimReseller.csv].[Min Payment Type]' />
+          <map key='[Month Number Of Year]' value='[DimDate (AdventureWorksDW2017)_DimDate.csv].[Month Number Of Year]' />
+          <map key='[Number Employees]' value='[DimReseller (AdventureWorksDW2017)_DimReseller.csv].[Number Employees]' />
+          <map key='[Order Date Key]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Order Date Key]' />
+          <map key='[Order Date]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Order Date]' />
+          <map key='[Order Frequency]' value='[DimReseller (AdventureWorksDW2017)_DimReseller.csv].[Order Frequency]' />
+          <map key='[Order Month]' value='[DimReseller (AdventureWorksDW2017)_DimReseller.csv].[Order Month]' />
+          <map key='[Order Quantity]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Order Quantity]' />
+          <map key='[Phone]' value='[DimReseller (AdventureWorksDW2017)_DimReseller.csv].[Phone]' />
+          <map key='[Product Key]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Product Key]' />
+          <map key='[Product Line]' value='[DimReseller (AdventureWorksDW2017)_DimReseller.csv].[Product Line]' />
+          <map key='[Product Standard Cost]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Product Standard Cost]' />
+          <map key='[Promotion Key]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Promotion Key]' />
+          <map key='[Reseller Alternate Key]' value='[DimReseller (AdventureWorksDW2017)_DimReseller.csv].[Reseller Alternate Key]' />
+          <map key='[Reseller Key (DimReseller (AdventureWorksDW2017)_DimReseller.csv)]' value='[DimReseller (AdventureWorksDW2017)_DimReseller.csv].[Reseller Key]' />
+          <map key='[Reseller Key]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Reseller Key]' />
+          <map key='[Reseller Name]' value='[DimReseller (AdventureWorksDW2017)_DimReseller.csv].[Reseller Name]' />
+          <map key='[Revision Number]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Revision Number]' />
+          <map key='[Sales Amount]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Sales Amount]' />
+          <map key='[Sales Order Line Number]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Sales Order Line Number]' />
+          <map key='[Sales Order Number]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Sales Order Number]' />
+          <map key='[Sales Territory Alternate Key]' value='[DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv].[Sales Territory Alternate Key]' />
+          <map key='[Sales Territory Country]' value='[DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv].[Sales Territory Country]' />
+          <map key='[Sales Territory Group]' value='[DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv].[Sales Territory Group]' />
+          <map key='[Sales Territory Image]' value='[DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv].[Sales Territory Image]' />
+          <map key='[Sales Territory Key (DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv)]' value='[DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv].[Sales Territory Key]' />
+          <map key='[Sales Territory Key]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Sales Territory Key]' />
+          <map key='[Sales Territory Region]' value='[DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv].[Sales Territory Region]' />
+          <map key='[Ship Date Key]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Ship Date Key]' />
+          <map key='[Ship Date]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Ship Date]' />
+          <map key='[Spanish Day Name Of Week]' value='[DimDate (AdventureWorksDW2017)_DimDate.csv].[Spanish Day Name Of Week]' />
+          <map key='[Spanish Month Name]' value='[DimDate (AdventureWorksDW2017)_DimDate.csv].[Spanish Month Name]' />
+          <map key='[Tax Amt]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Tax Amt]' />
+          <map key='[Total Product Cost]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Total Product Cost]' />
+          <map key='[Unit Price Discount Pct]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Unit Price Discount Pct]' />
+          <map key='[Unit Price]' value='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv].[Unit Price]' />
+          <map key='[Week Number Of Year]' value='[DimDate (AdventureWorksDW2017)_DimDate.csv].[Week Number Of Year]' />
+          <map key='[Year Opened]' value='[DimReseller (AdventureWorksDW2017)_DimReseller.csv].[Year Opened]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-16LE&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;\\t&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[DimCurrency (AdventureWorksDW2017)_DimCurrency.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-16LE&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;\\t&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[DimDate (AdventureWorksDW2017)_DimDate.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-16LE&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;\\t&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[DimReseller (AdventureWorksDW2017)_DimReseller.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-16LE&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;\\t&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-16LE&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;\\t&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Carrier Tracking Number</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Carrier Tracking Number]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Carrier Tracking Number</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Currency Key</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Currency Key]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Currency Key</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Customer PO Number</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Customer PO Number]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Customer PO Number</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Due Date</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[Due Date]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Due Date</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Due Date Key</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[Due Date Key]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Due Date Key</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Employee Key</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Employee Key]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Employee Key</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Order Date</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[Order Date]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Order Date</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Order Date Key</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[Order Date Key]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Order Date Key</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Product Key</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Product Key]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Product Key</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Promotion Key</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Promotion Key]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Promotion Key</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Reseller Key</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Reseller Key]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Reseller Key</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Revision Number</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Revision Number]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Revision Number</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Sales Order Line Number</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Sales Order Line Number]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Sales Order Line Number</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Sales Order Number</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Sales Order Number]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Sales Order Number</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Sales Territory Key</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Sales Territory Key]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Sales Territory Key</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Ship Date</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[Ship Date]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Ship Date</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Ship Date Key</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[Ship Date Key]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Ship Date Key</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Discount Amount</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Discount Amount]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Discount Amount</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Extended Amount</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Extended Amount]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Extended Amount</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Freight</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Freight]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Freight</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Order Quantity</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Order Quantity]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Order Quantity</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Product Standard Cost</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Product Standard Cost]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Product Standard Cost</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Sales Amount</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Sales Amount]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Sales Amount</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Tax Amt</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Tax Amt]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Tax Amt</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Total Product Cost</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Total Product Cost]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Total Product Cost</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Unit Price</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Unit Price]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Unit Price</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Unit Price Discount Pct</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Unit Price Discount Pct]</local-name>
+            <parent-name>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv]</parent-name>
+            <remote-alias>Unit Price Discount Pct</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Currency Alternate Key</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Currency Alternate Key]</local-name>
+            <parent-name>[DimCurrency (AdventureWorksDW2017)_DimCurrency.csv]</parent-name>
+            <remote-alias>Currency Alternate Key</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[DimCurrency (AdventureWorksDW2017)_DimCurrency.csv_9199455CD07B4BB29B2ACC3C2D8E59AF]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Currency Key</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Currency Key (DimCurrency (AdventureWorksDW2017)_DimCurrency.csv)]</local-name>
+            <parent-name>[DimCurrency (AdventureWorksDW2017)_DimCurrency.csv]</parent-name>
+            <remote-alias>Currency Key</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimCurrency (AdventureWorksDW2017)_DimCurrency.csv_9199455CD07B4BB29B2ACC3C2D8E59AF]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Currency Name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Currency Name]</local-name>
+            <parent-name>[DimCurrency (AdventureWorksDW2017)_DimCurrency.csv]</parent-name>
+            <remote-alias>Currency Name</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[DimCurrency (AdventureWorksDW2017)_DimCurrency.csv_9199455CD07B4BB29B2ACC3C2D8E59AF]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Calendar Quarter</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Calendar Quarter]</local-name>
+            <parent-name>[DimDate (AdventureWorksDW2017)_DimDate.csv]</parent-name>
+            <remote-alias>Calendar Quarter</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimDate (AdventureWorksDW2017)_DimDate.csv_706F6FCBB5A1427FA69B9ECEF1CFADCB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Calendar Year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Calendar Year]</local-name>
+            <parent-name>[DimDate (AdventureWorksDW2017)_DimDate.csv]</parent-name>
+            <remote-alias>Calendar Year</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimDate (AdventureWorksDW2017)_DimDate.csv_706F6FCBB5A1427FA69B9ECEF1CFADCB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Date Key</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[Date Key]</local-name>
+            <parent-name>[DimDate (AdventureWorksDW2017)_DimDate.csv]</parent-name>
+            <remote-alias>Date Key</remote-alias>
+            <ordinal>32</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimDate (AdventureWorksDW2017)_DimDate.csv_706F6FCBB5A1427FA69B9ECEF1CFADCB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Day Number Of Month</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Day Number Of Month]</local-name>
+            <parent-name>[DimDate (AdventureWorksDW2017)_DimDate.csv]</parent-name>
+            <remote-alias>Day Number Of Month</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimDate (AdventureWorksDW2017)_DimDate.csv_706F6FCBB5A1427FA69B9ECEF1CFADCB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Day Number Of Week</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Day Number Of Week]</local-name>
+            <parent-name>[DimDate (AdventureWorksDW2017)_DimDate.csv]</parent-name>
+            <remote-alias>Day Number Of Week</remote-alias>
+            <ordinal>34</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimDate (AdventureWorksDW2017)_DimDate.csv_706F6FCBB5A1427FA69B9ECEF1CFADCB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Day Number Of Year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Day Number Of Year]</local-name>
+            <parent-name>[DimDate (AdventureWorksDW2017)_DimDate.csv]</parent-name>
+            <remote-alias>Day Number Of Year</remote-alias>
+            <ordinal>35</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimDate (AdventureWorksDW2017)_DimDate.csv_706F6FCBB5A1427FA69B9ECEF1CFADCB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>English Day Name Of Week</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[English Day Name Of Week]</local-name>
+            <parent-name>[DimDate (AdventureWorksDW2017)_DimDate.csv]</parent-name>
+            <remote-alias>English Day Name Of Week</remote-alias>
+            <ordinal>36</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[DimDate (AdventureWorksDW2017)_DimDate.csv_706F6FCBB5A1427FA69B9ECEF1CFADCB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>English Month Name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[English Month Name]</local-name>
+            <parent-name>[DimDate (AdventureWorksDW2017)_DimDate.csv]</parent-name>
+            <remote-alias>English Month Name</remote-alias>
+            <ordinal>37</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[DimDate (AdventureWorksDW2017)_DimDate.csv_706F6FCBB5A1427FA69B9ECEF1CFADCB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Fiscal Quarter</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Fiscal Quarter]</local-name>
+            <parent-name>[DimDate (AdventureWorksDW2017)_DimDate.csv]</parent-name>
+            <remote-alias>Fiscal Quarter</remote-alias>
+            <ordinal>38</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimDate (AdventureWorksDW2017)_DimDate.csv_706F6FCBB5A1427FA69B9ECEF1CFADCB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Fiscal Year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Fiscal Year]</local-name>
+            <parent-name>[DimDate (AdventureWorksDW2017)_DimDate.csv]</parent-name>
+            <remote-alias>Fiscal Year</remote-alias>
+            <ordinal>39</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimDate (AdventureWorksDW2017)_DimDate.csv_706F6FCBB5A1427FA69B9ECEF1CFADCB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>French Day Name Of Week</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[French Day Name Of Week]</local-name>
+            <parent-name>[DimDate (AdventureWorksDW2017)_DimDate.csv]</parent-name>
+            <remote-alias>French Day Name Of Week</remote-alias>
+            <ordinal>40</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[DimDate (AdventureWorksDW2017)_DimDate.csv_706F6FCBB5A1427FA69B9ECEF1CFADCB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>French Month Name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[French Month Name]</local-name>
+            <parent-name>[DimDate (AdventureWorksDW2017)_DimDate.csv]</parent-name>
+            <remote-alias>French Month Name</remote-alias>
+            <ordinal>41</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[DimDate (AdventureWorksDW2017)_DimDate.csv_706F6FCBB5A1427FA69B9ECEF1CFADCB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Full Date Alternate Key</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[Full Date Alternate Key]</local-name>
+            <parent-name>[DimDate (AdventureWorksDW2017)_DimDate.csv]</parent-name>
+            <remote-alias>Full Date Alternate Key</remote-alias>
+            <ordinal>42</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimDate (AdventureWorksDW2017)_DimDate.csv_706F6FCBB5A1427FA69B9ECEF1CFADCB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Month Number Of Year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Month Number Of Year]</local-name>
+            <parent-name>[DimDate (AdventureWorksDW2017)_DimDate.csv]</parent-name>
+            <remote-alias>Month Number Of Year</remote-alias>
+            <ordinal>43</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimDate (AdventureWorksDW2017)_DimDate.csv_706F6FCBB5A1427FA69B9ECEF1CFADCB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Spanish Day Name Of Week</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Spanish Day Name Of Week]</local-name>
+            <parent-name>[DimDate (AdventureWorksDW2017)_DimDate.csv]</parent-name>
+            <remote-alias>Spanish Day Name Of Week</remote-alias>
+            <ordinal>44</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[DimDate (AdventureWorksDW2017)_DimDate.csv_706F6FCBB5A1427FA69B9ECEF1CFADCB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Spanish Month Name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Spanish Month Name]</local-name>
+            <parent-name>[DimDate (AdventureWorksDW2017)_DimDate.csv]</parent-name>
+            <remote-alias>Spanish Month Name</remote-alias>
+            <ordinal>45</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[DimDate (AdventureWorksDW2017)_DimDate.csv_706F6FCBB5A1427FA69B9ECEF1CFADCB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Week Number Of Year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Week Number Of Year]</local-name>
+            <parent-name>[DimDate (AdventureWorksDW2017)_DimDate.csv]</parent-name>
+            <remote-alias>Week Number Of Year</remote-alias>
+            <ordinal>46</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimDate (AdventureWorksDW2017)_DimDate.csv_706F6FCBB5A1427FA69B9ECEF1CFADCB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Calendar Semester</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Calendar Semester]</local-name>
+            <parent-name>[DimDate (AdventureWorksDW2017)_DimDate.csv]</parent-name>
+            <remote-alias>Calendar Semester</remote-alias>
+            <ordinal>47</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimDate (AdventureWorksDW2017)_DimDate.csv_706F6FCBB5A1427FA69B9ECEF1CFADCB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Fiscal Semester</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Fiscal Semester]</local-name>
+            <parent-name>[DimDate (AdventureWorksDW2017)_DimDate.csv]</parent-name>
+            <remote-alias>Fiscal Semester</remote-alias>
+            <ordinal>48</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimDate (AdventureWorksDW2017)_DimDate.csv_706F6FCBB5A1427FA69B9ECEF1CFADCB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>AddressLine1</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[AddressLine1]</local-name>
+            <parent-name>[DimReseller (AdventureWorksDW2017)_DimReseller.csv]</parent-name>
+            <remote-alias>AddressLine1</remote-alias>
+            <ordinal>49</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[DimReseller (AdventureWorksDW2017)_DimReseller.csv_2D7B60128BAD41D99630CB9FA0BF49E2]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>AddressLine2</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[AddressLine2]</local-name>
+            <parent-name>[DimReseller (AdventureWorksDW2017)_DimReseller.csv]</parent-name>
+            <remote-alias>AddressLine2</remote-alias>
+            <ordinal>50</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[DimReseller (AdventureWorksDW2017)_DimReseller.csv_2D7B60128BAD41D99630CB9FA0BF49E2]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Bank Name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Bank Name]</local-name>
+            <parent-name>[DimReseller (AdventureWorksDW2017)_DimReseller.csv]</parent-name>
+            <remote-alias>Bank Name</remote-alias>
+            <ordinal>51</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[DimReseller (AdventureWorksDW2017)_DimReseller.csv_2D7B60128BAD41D99630CB9FA0BF49E2]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Business Type</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Business Type]</local-name>
+            <parent-name>[DimReseller (AdventureWorksDW2017)_DimReseller.csv]</parent-name>
+            <remote-alias>Business Type</remote-alias>
+            <ordinal>52</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[DimReseller (AdventureWorksDW2017)_DimReseller.csv_2D7B60128BAD41D99630CB9FA0BF49E2]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>First Order Year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[First Order Year]</local-name>
+            <parent-name>[DimReseller (AdventureWorksDW2017)_DimReseller.csv]</parent-name>
+            <remote-alias>First Order Year</remote-alias>
+            <ordinal>53</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimReseller (AdventureWorksDW2017)_DimReseller.csv_2D7B60128BAD41D99630CB9FA0BF49E2]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Geography Key</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Geography Key]</local-name>
+            <parent-name>[DimReseller (AdventureWorksDW2017)_DimReseller.csv]</parent-name>
+            <remote-alias>Geography Key</remote-alias>
+            <ordinal>54</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimReseller (AdventureWorksDW2017)_DimReseller.csv_2D7B60128BAD41D99630CB9FA0BF49E2]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Last Order Year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Last Order Year]</local-name>
+            <parent-name>[DimReseller (AdventureWorksDW2017)_DimReseller.csv]</parent-name>
+            <remote-alias>Last Order Year</remote-alias>
+            <ordinal>55</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimReseller (AdventureWorksDW2017)_DimReseller.csv_2D7B60128BAD41D99630CB9FA0BF49E2]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Order Frequency</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Order Frequency]</local-name>
+            <parent-name>[DimReseller (AdventureWorksDW2017)_DimReseller.csv]</parent-name>
+            <remote-alias>Order Frequency</remote-alias>
+            <ordinal>56</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[DimReseller (AdventureWorksDW2017)_DimReseller.csv_2D7B60128BAD41D99630CB9FA0BF49E2]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Order Month</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Order Month]</local-name>
+            <parent-name>[DimReseller (AdventureWorksDW2017)_DimReseller.csv]</parent-name>
+            <remote-alias>Order Month</remote-alias>
+            <ordinal>57</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimReseller (AdventureWorksDW2017)_DimReseller.csv_2D7B60128BAD41D99630CB9FA0BF49E2]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Phone</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Phone]</local-name>
+            <parent-name>[DimReseller (AdventureWorksDW2017)_DimReseller.csv]</parent-name>
+            <remote-alias>Phone</remote-alias>
+            <ordinal>58</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[DimReseller (AdventureWorksDW2017)_DimReseller.csv_2D7B60128BAD41D99630CB9FA0BF49E2]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Product Line</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Product Line]</local-name>
+            <parent-name>[DimReseller (AdventureWorksDW2017)_DimReseller.csv]</parent-name>
+            <remote-alias>Product Line</remote-alias>
+            <ordinal>59</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[DimReseller (AdventureWorksDW2017)_DimReseller.csv_2D7B60128BAD41D99630CB9FA0BF49E2]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Reseller Alternate Key</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Reseller Alternate Key]</local-name>
+            <parent-name>[DimReseller (AdventureWorksDW2017)_DimReseller.csv]</parent-name>
+            <remote-alias>Reseller Alternate Key</remote-alias>
+            <ordinal>60</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[DimReseller (AdventureWorksDW2017)_DimReseller.csv_2D7B60128BAD41D99630CB9FA0BF49E2]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Reseller Key</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Reseller Key (DimReseller (AdventureWorksDW2017)_DimReseller.csv)]</local-name>
+            <parent-name>[DimReseller (AdventureWorksDW2017)_DimReseller.csv]</parent-name>
+            <remote-alias>Reseller Key</remote-alias>
+            <ordinal>61</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimReseller (AdventureWorksDW2017)_DimReseller.csv_2D7B60128BAD41D99630CB9FA0BF49E2]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Reseller Name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Reseller Name]</local-name>
+            <parent-name>[DimReseller (AdventureWorksDW2017)_DimReseller.csv]</parent-name>
+            <remote-alias>Reseller Name</remote-alias>
+            <ordinal>62</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[DimReseller (AdventureWorksDW2017)_DimReseller.csv_2D7B60128BAD41D99630CB9FA0BF49E2]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Year Opened</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Year Opened]</local-name>
+            <parent-name>[DimReseller (AdventureWorksDW2017)_DimReseller.csv]</parent-name>
+            <remote-alias>Year Opened</remote-alias>
+            <ordinal>63</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimReseller (AdventureWorksDW2017)_DimReseller.csv_2D7B60128BAD41D99630CB9FA0BF49E2]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Annual Revenue</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Annual Revenue]</local-name>
+            <parent-name>[DimReseller (AdventureWorksDW2017)_DimReseller.csv]</parent-name>
+            <remote-alias>Annual Revenue</remote-alias>
+            <ordinal>64</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimReseller (AdventureWorksDW2017)_DimReseller.csv_2D7B60128BAD41D99630CB9FA0BF49E2]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Annual Sales</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Annual Sales]</local-name>
+            <parent-name>[DimReseller (AdventureWorksDW2017)_DimReseller.csv]</parent-name>
+            <remote-alias>Annual Sales</remote-alias>
+            <ordinal>65</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimReseller (AdventureWorksDW2017)_DimReseller.csv_2D7B60128BAD41D99630CB9FA0BF49E2]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Min Payment Amount</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Min Payment Amount]</local-name>
+            <parent-name>[DimReseller (AdventureWorksDW2017)_DimReseller.csv]</parent-name>
+            <remote-alias>Min Payment Amount</remote-alias>
+            <ordinal>66</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimReseller (AdventureWorksDW2017)_DimReseller.csv_2D7B60128BAD41D99630CB9FA0BF49E2]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Min Payment Type</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Min Payment Type]</local-name>
+            <parent-name>[DimReseller (AdventureWorksDW2017)_DimReseller.csv]</parent-name>
+            <remote-alias>Min Payment Type</remote-alias>
+            <ordinal>67</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimReseller (AdventureWorksDW2017)_DimReseller.csv_2D7B60128BAD41D99630CB9FA0BF49E2]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Number Employees</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Number Employees]</local-name>
+            <parent-name>[DimReseller (AdventureWorksDW2017)_DimReseller.csv]</parent-name>
+            <remote-alias>Number Employees</remote-alias>
+            <ordinal>68</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimReseller (AdventureWorksDW2017)_DimReseller.csv_2D7B60128BAD41D99630CB9FA0BF49E2]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Sales Territory Alternate Key</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Sales Territory Alternate Key]</local-name>
+            <parent-name>[DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv]</parent-name>
+            <remote-alias>Sales Territory Alternate Key</remote-alias>
+            <ordinal>69</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv_18E9CE022E9E48E1B499D260501934A1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Sales Territory Country</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Sales Territory Country]</local-name>
+            <parent-name>[DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv]</parent-name>
+            <remote-alias>Sales Territory Country</remote-alias>
+            <ordinal>70</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv_18E9CE022E9E48E1B499D260501934A1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Sales Territory Group</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Sales Territory Group]</local-name>
+            <parent-name>[DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv]</parent-name>
+            <remote-alias>Sales Territory Group</remote-alias>
+            <ordinal>71</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv_18E9CE022E9E48E1B499D260501934A1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Sales Territory Image</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Sales Territory Image]</local-name>
+            <parent-name>[DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv]</parent-name>
+            <remote-alias>Sales Territory Image</remote-alias>
+            <ordinal>72</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv_18E9CE022E9E48E1B499D260501934A1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Sales Territory Key</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Sales Territory Key (DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv)]</local-name>
+            <parent-name>[DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv]</parent-name>
+            <remote-alias>Sales Territory Key</remote-alias>
+            <ordinal>73</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv_18E9CE022E9E48E1B499D260501934A1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Sales Territory Region</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Sales Territory Region]</local-name>
+            <parent-name>[DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv]</parent-name>
+            <remote-alias>Sales Territory Region</remote-alias>
+            <ordinal>74</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv_18E9CE022E9E48E1B499D260501934A1]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='integer' name='[Calendar Quarter]' role='dimension' type='quantitative' />
+      <column datatype='integer' name='[Calendar Year]' role='dimension' type='quantitative' />
+      <column caption='Currency Key (DimCurrency (AdventureWorksDW2017) DimCurrency.csv)' datatype='integer' name='[Currency Key (DimCurrency (AdventureWorksDW2017)_DimCurrency.csv)]' role='dimension' type='ordinal' />
+      <column datatype='integer' name='[Currency Key]' role='dimension' type='ordinal' />
+      <column datatype='integer' name='[Employee Key]' role='dimension' type='ordinal' />
+      <column datatype='integer' name='[Fiscal Quarter]' role='dimension' type='quantitative' />
+      <column datatype='integer' name='[Fiscal Year]' role='dimension' type='quantitative' />
+      <column datatype='integer' name='[Geography Key]' role='dimension' type='ordinal' />
+      <column datatype='integer' name='[Order Month]' role='dimension' type='quantitative' />
+      <column datatype='integer' name='[Product Key]' role='dimension' type='ordinal' />
+      <column datatype='integer' name='[Promotion Key]' role='dimension' type='ordinal' />
+      <column caption='Reseller Key (DimReseller (AdventureWorksDW2017) DimReseller.csv)' datatype='integer' name='[Reseller Key (DimReseller (AdventureWorksDW2017)_DimReseller.csv)]' role='dimension' type='ordinal' />
+      <column datatype='integer' name='[Reseller Key]' role='dimension' type='ordinal' />
+      <column datatype='integer' name='[Revision Number]' role='dimension' type='ordinal' />
+      <column datatype='string' name='[Sales Territory Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column caption='Sales Territory Key (DimSalesTerritory (AdventureWorksDW2017) DimSalesTerritory.csv)' datatype='integer' name='[Sales Territory Key (DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv)]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[Year Opened]' role='dimension' type='quantitative' />
+      <column caption='DimCurrency (AdventureWorksDW2017)_DimCurrency.csv' datatype='table' name='[__tableau_internal_object_id__].[DimCurrency (AdventureWorksDW2017)_DimCurrency.csv_9199455CD07B4BB29B2ACC3C2D8E59AF]' role='measure' type='quantitative' />
+      <column caption='DimDate (AdventureWorksDW2017)_DimDate.csv' datatype='table' name='[__tableau_internal_object_id__].[DimDate (AdventureWorksDW2017)_DimDate.csv_706F6FCBB5A1427FA69B9ECEF1CFADCB]' role='measure' type='quantitative' />
+      <column caption='DimReseller (AdventureWorksDW2017)_DimReseller.csv' datatype='table' name='[__tableau_internal_object_id__].[DimReseller (AdventureWorksDW2017)_DimReseller.csv_2D7B60128BAD41D99630CB9FA0BF49E2]' role='measure' type='quantitative' />
+      <column caption='DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv' datatype='table' name='[__tableau_internal_object_id__].[DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv_18E9CE022E9E48E1B499D260501934A1]' role='measure' type='quantitative' />
+      <column caption='FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv' datatype='table' name='[__tableau_internal_object_id__].[FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C]' role='measure' type='quantitative' />
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='DimCurrency (AdventureWorksDW2017)_DimCurrency.csv' id='DimCurrency (AdventureWorksDW2017)_DimCurrency.csv_9199455CD07B4BB29B2ACC3C2D8E59AF'>
+            <properties context=''>
+              <relation connection='textscan.1m6a9mm0tu88il162rcwq0d1lnxk' name='DimCurrency (AdventureWorksDW2017)_DimCurrency.csv' table='[DimCurrency (AdventureWorksDW2017)_DimCurrency#csv]' type='table'>
+                <columns character-set='UTF-16LE' header='yes' locale='en_US' separator='&#9;'>
+                  <column datatype='string' name='Currency Alternate Key' ordinal='0' />
+                  <column datatype='integer' name='Currency Key' ordinal='1' />
+                  <column datatype='string' name='Currency Name' ordinal='2' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+          <object caption='DimDate (AdventureWorksDW2017)_DimDate.csv' id='DimDate (AdventureWorksDW2017)_DimDate.csv_706F6FCBB5A1427FA69B9ECEF1CFADCB'>
+            <properties context=''>
+              <relation connection='textscan.1m6a9mm0tu88il162rcwq0d1lnxk' name='DimDate (AdventureWorksDW2017)_DimDate.csv' table='[DimDate (AdventureWorksDW2017)_DimDate#csv]' type='table'>
+                <columns character-set='UTF-16LE' header='yes' locale='en_US' separator='&#9;'>
+                  <column datatype='integer' name='Calendar Quarter' ordinal='0' />
+                  <column datatype='integer' name='Calendar Year' ordinal='1' />
+                  <column datatype='date' name='Date Key' ordinal='2' />
+                  <column datatype='integer' name='Day Number Of Month' ordinal='3' />
+                  <column datatype='integer' name='Day Number Of Week' ordinal='4' />
+                  <column datatype='integer' name='Day Number Of Year' ordinal='5' />
+                  <column datatype='string' name='English Day Name Of Week' ordinal='6' />
+                  <column datatype='string' name='English Month Name' ordinal='7' />
+                  <column datatype='integer' name='Fiscal Quarter' ordinal='8' />
+                  <column datatype='integer' name='Fiscal Year' ordinal='9' />
+                  <column datatype='string' name='French Day Name Of Week' ordinal='10' />
+                  <column datatype='string' name='French Month Name' ordinal='11' />
+                  <column datatype='date' name='Full Date Alternate Key' ordinal='12' />
+                  <column datatype='integer' name='Month Number Of Year' ordinal='13' />
+                  <column datatype='string' name='Spanish Day Name Of Week' ordinal='14' />
+                  <column datatype='string' name='Spanish Month Name' ordinal='15' />
+                  <column datatype='integer' name='Week Number Of Year' ordinal='16' />
+                  <column datatype='integer' name='Calendar Semester' ordinal='17' />
+                  <column datatype='integer' name='Fiscal Semester' ordinal='18' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+          <object caption='DimReseller (AdventureWorksDW2017)_DimReseller.csv' id='DimReseller (AdventureWorksDW2017)_DimReseller.csv_2D7B60128BAD41D99630CB9FA0BF49E2'>
+            <properties context=''>
+              <relation connection='textscan.1m6a9mm0tu88il162rcwq0d1lnxk' name='DimReseller (AdventureWorksDW2017)_DimReseller.csv' table='[DimReseller (AdventureWorksDW2017)_DimReseller#csv]' type='table'>
+                <columns character-set='UTF-16LE' header='yes' locale='en_US' separator='&#9;'>
+                  <column datatype='string' name='AddressLine1' ordinal='0' />
+                  <column datatype='string' name='AddressLine2' ordinal='1' />
+                  <column datatype='string' name='Bank Name' ordinal='2' />
+                  <column datatype='string' name='Business Type' ordinal='3' />
+                  <column datatype='integer' name='First Order Year' ordinal='4' />
+                  <column datatype='integer' name='Geography Key' ordinal='5' />
+                  <column datatype='integer' name='Last Order Year' ordinal='6' />
+                  <column datatype='string' name='Order Frequency' ordinal='7' />
+                  <column datatype='integer' name='Order Month' ordinal='8' />
+                  <column datatype='string' name='Phone' ordinal='9' />
+                  <column datatype='string' name='Product Line' ordinal='10' />
+                  <column datatype='string' name='Reseller Alternate Key' ordinal='11' />
+                  <column datatype='integer' name='Reseller Key' ordinal='12' />
+                  <column datatype='string' name='Reseller Name' ordinal='13' />
+                  <column datatype='integer' name='Year Opened' ordinal='14' />
+                  <column datatype='integer' name='Annual Revenue' ordinal='15' />
+                  <column datatype='integer' name='Annual Sales' ordinal='16' />
+                  <column datatype='integer' name='Min Payment Amount' ordinal='17' />
+                  <column datatype='integer' name='Min Payment Type' ordinal='18' />
+                  <column datatype='integer' name='Number Employees' ordinal='19' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+          <object caption='DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv' id='DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv_18E9CE022E9E48E1B499D260501934A1'>
+            <properties context=''>
+              <relation connection='textscan.1m6a9mm0tu88il162rcwq0d1lnxk' name='DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv' table='[DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory#csv]' type='table'>
+                <columns character-set='UTF-16LE' header='yes' locale='en_US' separator='&#9;'>
+                  <column datatype='integer' name='Sales Territory Alternate Key' ordinal='0' />
+                  <column datatype='string' name='Sales Territory Country' ordinal='1' />
+                  <column datatype='string' name='Sales Territory Group' ordinal='2' />
+                  <column datatype='string' name='Sales Territory Image' ordinal='3' />
+                  <column datatype='integer' name='Sales Territory Key' ordinal='4' />
+                  <column datatype='string' name='Sales Territory Region' ordinal='5' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+          <object caption='FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv' id='FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C'>
+            <properties context=''>
+              <relation connection='textscan.1m6a9mm0tu88il162rcwq0d1lnxk' name='FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv' table='[FactResellerSales (AdventureWorksDW2017)_FactResellerSales#csv]' type='table'>
+                <columns character-set='UTF-16LE' header='yes' locale='en_US' separator='&#9;'>
+                  <column datatype='string' name='Carrier Tracking Number' ordinal='0' />
+                  <column datatype='integer' name='Currency Key' ordinal='1' />
+                  <column datatype='string' name='Customer PO Number' ordinal='2' />
+                  <column datatype='datetime' name='Due Date' ordinal='3' />
+                  <column datatype='date' name='Due Date Key' ordinal='4' />
+                  <column datatype='integer' name='Employee Key' ordinal='5' />
+                  <column datatype='datetime' name='Order Date' ordinal='6' />
+                  <column datatype='date' name='Order Date Key' ordinal='7' />
+                  <column datatype='integer' name='Product Key' ordinal='8' />
+                  <column datatype='integer' name='Promotion Key' ordinal='9' />
+                  <column datatype='integer' name='Reseller Key' ordinal='10' />
+                  <column datatype='integer' name='Revision Number' ordinal='11' />
+                  <column datatype='integer' name='Sales Order Line Number' ordinal='12' />
+                  <column datatype='string' name='Sales Order Number' ordinal='13' />
+                  <column datatype='integer' name='Sales Territory Key' ordinal='14' />
+                  <column datatype='datetime' name='Ship Date' ordinal='15' />
+                  <column datatype='date' name='Ship Date Key' ordinal='16' />
+                  <column datatype='real' name='Discount Amount' ordinal='17' />
+                  <column datatype='real' name='Extended Amount' ordinal='18' />
+                  <column datatype='real' name='Freight' ordinal='19' />
+                  <column datatype='integer' name='Order Quantity' ordinal='20' />
+                  <column datatype='real' name='Product Standard Cost' ordinal='21' />
+                  <column datatype='real' name='Sales Amount' ordinal='22' />
+                  <column datatype='real' name='Tax Amt' ordinal='23' />
+                  <column datatype='real' name='Total Product Cost' ordinal='24' />
+                  <column datatype='real' name='Unit Price' ordinal='25' />
+                  <column datatype='real' name='Unit Price Discount Pct' ordinal='26' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+        <relationships>
+          <relationship>
+            <expression op='='>
+              <expression op='[Currency Key]' />
+              <expression op='[Currency Key (DimCurrency (AdventureWorksDW2017)_DimCurrency.csv)]' />
+            </expression>
+            <first-end-point object-id='FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C' />
+            <second-end-point object-id='DimCurrency (AdventureWorksDW2017)_DimCurrency.csv_9199455CD07B4BB29B2ACC3C2D8E59AF' />
+          </relationship>
+          <relationship>
+            <expression op='AND'>
+              <expression op='='>
+                <expression op='[Order Date Key]' />
+                <expression op='[Date Key]' />
+              </expression>
+              <expression op='='>
+                <expression op='[Due Date Key]' />
+                <expression op='[Date Key]' />
+              </expression>
+              <expression op='='>
+                <expression op='[Ship Date Key]' />
+                <expression op='[Date Key]' />
+              </expression>
+            </expression>
+            <first-end-point object-id='FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C' />
+            <second-end-point object-id='DimDate (AdventureWorksDW2017)_DimDate.csv_706F6FCBB5A1427FA69B9ECEF1CFADCB' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[Reseller Key]' />
+              <expression op='[Reseller Key (DimReseller (AdventureWorksDW2017)_DimReseller.csv)]' />
+            </expression>
+            <first-end-point object-id='FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C' />
+            <second-end-point object-id='DimReseller (AdventureWorksDW2017)_DimReseller.csv_2D7B60128BAD41D99630CB9FA0BF49E2' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[Sales Territory Key]' />
+              <expression op='[Sales Territory Key (DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv)]' />
+            </expression>
+            <first-end-point object-id='FactResellerSales (AdventureWorksDW2017)_FactResellerSales.csv_88CFF952AE9D4B5A8924C1E5870B5B0C' />
+            <second-end-point object-id='DimSalesTerritory (AdventureWorksDW2017)_DimSalesTerritory.csv_18E9CE022E9E48E1B499D260501934A1' />
+          </relationship>
+        </relationships>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Q1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='FactInternetSales (AdventureWorksDW2017)_FactInternetSales' name='federated.0ckm5nh1p6wxz31e1fjvs13gqg6i' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0ckm5nh1p6wxz31e1fjvs13gqg6i'>
+            <column datatype='string' name='[Business Type]' role='dimension' type='nominal' />
+            <column datatype='datetime' name='[Order Date]' role='dimension' type='ordinal' />
+            <column datatype='real' name='[Sales Amount]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Sales Territory Region]' role='dimension' type='nominal' />
+            <column-instance column='[Business Type]' derivation='None' name='[none:Business Type:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Sales Territory Region]' derivation='None' name='[none:Sales Territory Region:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Sales Amount]' derivation='Avg' name='[pcto:avg:Sales Amount:qk:2]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='ColumnInPane' type='PctTotal' />
+            </column-instance>
+            <column-instance column='[Order Date]' derivation='Quarter' name='[qr:Order Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Order Date]' derivation='Year' name='[yr:Order Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <single-value-per-nest-shelf-sorts>
+            <single-value-per-nest-shelf-sort dimension-to-sort='[federated.0ckm5nh1p6wxz31e1fjvs13gqg6i].[none:Sales Territory Region:nk]' direction='ASC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0ckm5nh1p6wxz31e1fjvs13gqg6i].[none:Sales Territory Region:nk]' shelf='rows' />
+          </single-value-per-nest-shelf-sorts>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0ckm5nh1p6wxz31e1fjvs13gqg6i].[pcto:avg:Sales Amount:qk:2]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows total='true'>([federated.0ckm5nh1p6wxz31e1fjvs13gqg6i].[none:Business Type:nk] / [federated.0ckm5nh1p6wxz31e1fjvs13gqg6i].[none:Sales Territory Region:nk])</rows>
+        <cols total='true'>([federated.0ckm5nh1p6wxz31e1fjvs13gqg6i].[yr:Order Date:ok] / [federated.0ckm5nh1p6wxz31e1fjvs13gqg6i].[qr:Order Date:ok])</cols>
+        <subtotals>
+          <column>[federated.0ckm5nh1p6wxz31e1fjvs13gqg6i].[none:Business Type:nk]</column>
+          <column>[federated.0ckm5nh1p6wxz31e1fjvs13gqg6i].[yr:Order Date:ok]</column>
+        </subtotals>
+      </table>
+      <simple-id uuid='{F85C8045-31EE-4BBD-B8E7-C42BF0BB6092}' />
+    </worksheet>
+    <worksheet name='Q2'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='FactInternetSales (AdventureWorksDW2017)_FactInternetSales' name='federated.0ckm5nh1p6wxz31e1fjvs13gqg6i' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0ckm5nh1p6wxz31e1fjvs13gqg6i'>
+            <column datatype='datetime' name='[Order Date]' role='dimension' type='ordinal' />
+            <column datatype='real' name='[Sales Amount]' role='measure' type='quantitative' />
+            <column-instance column='[Sales Amount]' derivation='Sum' name='[sum:Sales Amount:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Order Date]' derivation='Month-Trunc' name='[tmn:Order Date:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='label'>
+            <format attr='text-format' field='[federated.0ckm5nh1p6wxz31e1fjvs13gqg6i].[sum:Sales Amount:qk]' value='C1033%' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+          </pane>
+        </panes>
+        <rows>[federated.0ckm5nh1p6wxz31e1fjvs13gqg6i].[sum:Sales Amount:qk]</rows>
+        <cols>[federated.0ckm5nh1p6wxz31e1fjvs13gqg6i].[tmn:Order Date:qk]</cols>
+      </table>
+      <simple-id uuid='{CB996812-D992-4516-8A2A-BE4598B7A459}' />
+    </worksheet>
+    <worksheet name='Q3'>
+      <table>
+        <view>
+          <datasources />
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{251DD2DC-0AD9-4A98-8844-399B151F4275}' />
+    </worksheet>
+  </worksheets>
+  <windows saved-dpi-scale-factor='1.5' source-height='44'>
+    <window class='worksheet' name='Q1'>
+      <cards>
+        <edge name='left'>
+          <strip size='134'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0ckm5nh1p6wxz31e1fjvs13gqg6i].[none:Business Type:nk]</field>
+            <field>[federated.0ckm5nh1p6wxz31e1fjvs13gqg6i].[none:Sales Territory Region:nk]</field>
+            <field>[federated.0ckm5nh1p6wxz31e1fjvs13gqg6i].[yr:Order Date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{91A8355D-C1EB-4EC0-9F60-31F058EE962E}' />
+    </window>
+    <window class='worksheet' name='Q2'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <selection-collection>
+          <tuple-selection>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0ckm5nh1p6wxz31e1fjvs13gqg6i].[tmn:Order Date:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0ckm5nh1p6wxz31e1fjvs13gqg6i].[sum:Sales Amount:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0ckm5nh1p6wxz31e1fjvs13gqg6i].[sum:Sales Amount:qk]</field>
+                  <field>[federated.0ckm5nh1p6wxz31e1fjvs13gqg6i].[tmn:Order Date:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>4212971.5098999795</value>
+                <value>#2013-01-01 00:00:00#</value>
+              </tuple>
+            </tuple-reference>
+          </tuple-selection>
+        </selection-collection>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0ckm5nh1p6wxz31e1fjvs13gqg6i].[yr:Order Date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{F16E72EF-E54B-47D9-AFA3-6EF1573439F5}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Q3'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{C1C0F7F3-3F3A-4873-B54B-B23981B1D2D7}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Q1' width='192'>
+      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
+    </thumbnail>
+    <thumbnail height='192' name='Q2' width='192'>
+      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
+    </thumbnail>
+    <thumbnail height='192' name='Q3' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAACFUlEQVR4nO3TMQEAIAzAMMC/5yFjRxMFfXpnZg5Eve0A2GQA0gxAmgFIMwBpBiDNAKQZ
+      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
+      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQD
+      kGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBp
+      BiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA
+      0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDN
+      AKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxA
+      mgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZ
+      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
+      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKR9Y+0F
+      fBUOM1sAAAAASUVORK5CYII=
+    </thumbnail>
+  </thumbnails>
+</workbook>
