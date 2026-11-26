@@ -1,0 +1,169 @@
+---
+title: "Activity - Introduction to R"
+author: "Dev Patel"
+format:
+  pdf:
+    toc: true
+editor: visual
+---
+
+# Overview
+
+This activity is meant to help you practice getting yourself familiar with R and Quarto documents. There is definitely a bit of a learning curve to R, so don't worry if it take a bit to get the hang of things, it will get easier with practice.
+
+## Section 1 - Simple Calculator
+
+1.  Create a simple (numeric) equation and save it as an object. The equation must be different from the equation in the textbook and tutorial provided in class).
+
+```{r}
+x <- 15 * 3 + 7
+x
+```
+
+2.  Create a second (numeric) equation and save it as another object.
+
+```{r}
+y <- 100 / 4 - 8
+y
+```
+
+3.  Now create a third object, that adds, subtracts, multiplies, or divides, your first two objects. How many objects do you see in your global environment?
+
+```{r}
+z <- x * y
+z
+```
+
+I can see 3 objects in the global environment: x, y, and z.
+
+## Section 2 - Vectors
+
+1.  Create a character vector called "First" that contains the first names of five people (e.g., famous people, yourself, random names).
+
+```{r}
+## First names of my roommates
+First <- c("Vishwas", "Aryan", "Janvi", "Moksha", "Pranav")
+```
+
+2.  Create a second character vector called "Last" which includes the last names of the people you included in your vector "First". Be sure to enter the names in the same order.
+
+```{r}
+## Last names of my roommates
+Last <- c("Mehta", "Bhagat", "Kacchadia", "Shah", "Trivedi")
+```
+
+3.  Create a dataframe called "names", which consists of the two vectors "First" and "Last".
+
+```{r}
+names <- data.frame(First, Last)
+names
+```
+
+4.  Use the str() function to see the structure of your new dataframe.
+
+```{r}
+str(names)
+```
+
+## Section 3 - Packages and Loading Data
+
+1.  Write the code to install the "tidyverse" package and the "peopleanalyticsdata" package.
+
+```{r}
+#| eval: false
+install.packages("tidyverse")
+install.packages("peopleanalyticsdata")
+```
+
+2.  Write the code to load the tidyverse and peopleanalyticsdata packages.
+
+```{r}
+#| message: false
+library(tidyverse)
+library(peopleanalyticsdata)
+```
+
+3.  Import the salespeople data using any of the methods shown in class/the recorded videos. There are 3 main methods. 1) Downloading the .csv file from Canvas and using read_csv. 2) The url method (see 2.4.1 in the PA Handbook textbook). 3) the method of loading the data from a package directly.
+
+```{r}
+#| message: false
+salespeople <- read_csv("sales(1).csv")
+```
+
+4.  Create a line of code to view your dataframe.
+
+```{r}
+#| eval: false
+View(salespeople)
+```
+
+5.  Create a line of code to check the structure of your dataframe use the str function.
+
+```{r}
+str(salespeople)
+```
+
+6.  Create a line of code that uses the head function to check the first six lines of your dataframe.
+
+```{r}
+head(salespeople)
+```
+
+7.  Create a line of code that uses the tail function to check the last six lines of your dataframe.
+
+```{r}
+tail(salespeople)
+```
+
+8.  What do you notice about the "number of observations" and "variables" listed for you dataframe in the global environment? What does number of observations correspond to? What does variables correspond to? **This answer should just be a text based response.**
+
+Total number of observations = 351 observations. Total number of variables = 5. The number of observations corresponds to the number of rows in the dataset, meaning there are 351 individual sales person in the data. The number of variables corresponds to the number of columns, which are: ID, promoted, sales, customer_rate, and performance.
+
+## Section 4 - Use AI
+
+**Note,** if you are unable to complete #1 or #2 this section, you may skip them and answer only #3 and still earn full points. However, please be sure to enter the code you tried for #1 and #2 so that I can see what went wrong. We will debrief on this during our next meeting.
+
+1.  Use an AI tool of your choice to ask for the code to get the mean value of the customer service ratings column (be sure to use the exact name of the column). Enter the code you used below (regardless of whether it worked). **In addition to the code, type in what the mean value is.**
+
+```{r}
+mean(salespeople$customer_rate, na.rm = TRUE)
+```
+
+The mean value is 3.608.
+
+2.  Use an AI tool of your choice to ask for the R code to get the count of people who were promoted vs not promoted. **Note, 0 = not promoted and 1 = promoted.** Enter the code you used below (regardless of whether it worked). **In addition to the code, type in either the number or percent of people that were promoted vs not.**
+
+```{r}
+table(salespeople$promoted)
+```
+
+People not promoted = 238. People promoted = 113.
+
+3.  Were you able to accomplish this using only AI? **Briefly describe your experience.**
+
+Yes, I was able to accomplish this using Claude code. I asked the AI for the R code to calculate the mean of the customer_rate column and the count of promoted vs not promoted employees. The AI provided the correct code for both tasks, which worked on the first try.
+
+## Section 5 - Load csv file.
+
+Note, this is exactly the same steps as you were asked to complete at the end of Activity 1. The point is to have you continue practice loading data into R and get comfortable with this step.
+
+1.  Download your Google form data as a .csv file and save it into the same folder as you have saved your activity file/project. **Note, this is the exact same step as you did at the end of Activity 1.**
+
+2.  Use the read_csv command to import your data from the Google Form Created.
+
+```{r}
+#| message: false
+google_form_data <- read_csv("googlesurvey_csv.csv")
+```
+
+3.  Click on the newly created object in your global environment.
+
+4.  Are you able to see your data? **This should be a text based response.**
+
+Yes I can see all the responses from the Google Form displayed in a spreadsheet-like format.
+
+5.  Save the QMD file you have been working on. Be sure to submit both your saved .QMD file and your Google Form .csv file.
+
+## **Feedback**
+
+If you have any feedback regarding this activity please provide it below. This could be instructions that could be clarified, points you are still unsure about, where you had the most difficulty, etc. I will review these notes and address them during the following class session.
