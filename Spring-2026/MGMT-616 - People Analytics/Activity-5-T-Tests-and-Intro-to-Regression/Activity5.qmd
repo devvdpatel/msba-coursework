@@ -1,0 +1,265 @@
+---
+title: "Activity - T-Tests & Regression in R"
+author: "Dev Patel"
+date: 4/29/2026
+execute:
+  echo: false
+  warning: false
+  message: false
+format: 
+  pdf:
+    toc: true
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+# Overview
+
+In this tutorial, we will go over making group comparisons first using T-Tests (to compare two groups or two points in time), and then using regression. This material will be discussed in the context of training evaluation and employee selection.
+
+This material is covered in the rforhr.com textbook in Chapters 31-34 and Chapters 35 and 37.
+
+[**Note, sections 1-4 are esesentially repeated from previous activities. You can simply copy and paste the code from those sections into this activity.**]{.underline}
+
+## Section 1 - Load Packages & Read in .csv Files
+
+1.  In this activity, you will need to use the readr, dplyr, and lessR packages. Write and run the code below to load all three packages from your library. Note, if you have not installed any packages, you will first need to use the install.packages() function to install those packages.
+
+    ```{r}
+    library(tidyverse)
+    library(dplyr)
+    library(lessR)
+
+    ```
+
+2.  Write and run the code to create two dataframes, one for each csv file using the read_csv() function (the HR and Sales.csv file and the Training Data 2.csv file).
+
+    ```{r}
+    hr_sales <- read_csv("HR and Sales-1.csv", name_repair = "universal")
+    training  <- read_csv("Training Data 2-1.csv", name_repair = "universal")
+
+    ```
+
+3.  Use the names() function to print the column names from each dataframe into your console.
+
+    ```{r}
+    names(hr_sales)
+    names(training)
+    ```
+
+## Section 2 - Joining data files
+
+The next step is to join the two dataframes together. Note, if you have not done so already, you will need to load the dplyr package using the library() function to complete this section.
+
+1.  Use the left_join() function to create a third dataframe. The new dataframe should contain the data from both csv files. **Note**, whichever dataframe you include first, those columns will appear first in the merged file, but the column order does not matter for our purposes.
+
+    ```{r}
+    merged_data <- left_join(hr_sales, training, by = "ID")
+    ```
+
+2.  Use the names() function to see the names of the newly created dataframe.
+
+    ```{r}
+    names(merged_data)
+    ```
+
+## Section 3 - Factors
+
+In this section you will create one factor based on existing variables. **Note**, you must create your new factor to be a [**different column name**]{.underline} from the name in the original dataframe. This means that this step should add a column to your dataframe.
+
+1.  Create a factor for the **Program** variable with two levels. The levels should be set using the same labels already in the dataset. The labels are 1 = "Richardson Program" and 2 = "Grant Cardone Program".
+
+    ```{r}
+    merged_data <- merged_data %>%
+      mutate(program_factor = factor(Program,
+                                     levels = c(1, 2),
+                                     labels = c("Richardson Program",
+                                                "Grant Cardone Program")))
+    ```
+
+2.  Use the str() function to check the structure of each factor variable you created.
+
+    ```{r}
+    str(merged_data$program_factor)
+    ```
+
+## Section 4 - Filter Data
+
+Currently, the data includes employees with a large range of tenure. Stakeholders want to compare the effect of the training for only employees that have been at the organization for at least 31 days. Their rationale is that for the first two weeks sales associates complete the training program and shadow an experienced sales person. It isn't until the second month of employment that they are expected to be fully up to speed.
+
+1.  Using the dataframe from Section 4, create a new dataframe that includes only employees with 31 or more days of tenure. **Use this dataset for the remainder of the activity (aside from section 6 which requires creating additional dataframes).**
+
+    ```{r}
+    filtered_data <- merged_data %>%
+      filter(tenure.days >= 31)
+      
+    ```
+
+## Section 5 - Independent Samples T-Tests
+
+1.  Write and run the code to call the lessR package from your library.
+
+    ```{r}
+    library(lessR)
+    ```
+
+2.  Conduct an independent samples t-test between the **two training groups (X Variable)** on the outcome of **post-training customer service (Y Variable).**
+
+    ```{r}
+    ttest(post.customer.rating ~ program_factor, data = filtered_data)
+    ```
+
+3.  Write up your results in line with the example from the tutorial. You can add the percentage change as an indicator of effect size.
+
+    The results of an independent samples t-test between the Richardson Program and the Grant Cardone Program indicated no statistically significant difference between the two groups. The Richardson Program had an average rating of 4.08 (SD = 1.115, n = 229), while the Grant Cardone Program had an average rating of 3.96 (SD = 0.774, n = 205), a difference of approximately 3% between the two groups. A small standardized mean difference of 0.12 suggests a very small practical effect, suggesting that both training programs produced nearly equivalent post-training customer service ratings.
+
+4.  Conduct any other independent samples t-test that you think would be important or interesting to conduct.
+
+    ```{r}
+    ttest(post.training.revenue ~ program_factor, data = filtered_data)
+    ```
+
+5.  Write up your results in line with the example from the tutorial. You can add the percentage change as an indicator of effect size.
+
+    The results indicated no statistically significant difference between the two groups, t = 1.557, df = 432, p = 0.120. The Richardson Program had an average post-training revenue of \$406,719 (SD = \$585,491, n = 229), while the Grant Cardone Program had an average of \$332,118 (SD = \$378,149, n = 205), a mean difference of approximately \$74,601. The standardized mean difference (SMD) of 0.15 suggests a very small practical effect, and the 95% confidence interval for the mean difference ranged from -\$19,595 to \$168,797, which crosses zero and further confirms the difference is not statistically significant.
+
+## Section 6 - Paired Sample T-Test
+
+Because our data contains two different training groups, **you will first need to split the data based on training program.** This is done using the filter function.
+
+1.  Use the filter function to create a dataframe containing only employees in the Richardson program (program 1).
+
+    ```{r}
+    richardson_data <- filtered_data %>%
+      filter(program_factor == "Richardson Program")
+    ```
+
+2.  Use the filter function to create a second dataframe containing only employees in the Grant Cardone Program (program 2).
+
+    ```{r}
+    grantcardone_data <- filtered_data %>%
+      filter(program_factor == "Grant Cardone Program")
+    ```
+
+3.  Conduct a paired sample T-Test for **pre-training** **revenue** and **post training revenue** for those that completed the **Richardson Program.**
+
+    ```{r}
+    ttest(pre.training.revenue, post.training.revenue,
+          data = richardson_data, paired = TRUE)
+    ```
+
+4.  Write up your results in line with the example from the tutorial.
+
+    The results indicated a statistically significant increase in revenue following training, t(228) = 5.240, p \< .001. On average, post-training revenue was \$131,858 higher than pre-training revenue (SD = \$380,826), with a 95% confidence interval ranging from \$82,271 to \$181,445. Cohen's d = 0.346 suggests a small to medium practical effect. These results indicate that the Richardson Program was associated with a meaningful and statistically significant improvement in employee revenue performance.
+
+5.  Conduct a paired sample T-Test for **pre-training** **revenue** and p**ost training revenue** for those that completed the **Grant Cardone Program**.
+
+    ```{r}
+    ttest(pre.training.revenue, post.training.revenue,
+          data = grantcardone_data, paired = TRUE)
+    ```
+
+6.  Write up your results in line with the example from the tutorial.
+
+    The results indicated no statistically significant difference between pre-training and post-training revenue, t(204) = 0.807, p = 0.421. On average, post-training revenue was only \$19,330 higher than pre-training revenue (SD = \$343,113), with a 95% confidence interval ranging from -\$27,919 to \$66,579, which crosses zero and confirms the difference is not statistically significant. Cohen's d = 0.056 indicates a negligible practical effect.
+
+    Taken together with the Richardson Program results, these findings suggest that the Richardson Program produced a meaningful improvement in revenue performance while the Grant Cardone Program did not produce a statistically significant change.
+
+## Section 7 - Simple Regression
+
+1.  Conduct a linear regression with the factor you created for the **program** variable as the **X variable**, and p**ost training customer ratings** as the **Y variable.**
+
+    ```{r}
+    model1 <- lm(post.customer.rating ~ program_factor, data = filtered_data)
+    summary(model1)
+    ```
+
+2.  Write up your results in line with the example provided.
+
+    The overall model was not statistically significant, *F*(1, 432) = 1.684, *p* = .195, *R*² = .004, which means the training program accounted for less than 1% of the variance in post-training customer service ratings. The Grant Cardone Program was also not a significant predictor (β = -0.121, *p* = .195). Overall, the type of training program by itself does not seem to be a strong predictor of post-training customer service performance.
+
+## Section 8 - Multiple Regression
+
+1.  Conduct a multiple regression the includes **post-training customer service ratings** as the **Y variable**, and **both,** the **program** factor variable and the **pre training customer service** scores as **X variables.**
+
+    ```{r}
+    model2 <- lm(post.customer.rating ~ program_factor + pre.customer.rating,
+                 data = filtered_data)
+    summary(model2)
+    ```
+
+2.  Compute the standardized beta coefficients for these outcomes (use lm.beta function)
+
+    ```{r}
+    lm.beta <- function(model) {
+      coefs <- coef(model)[-1]
+      sd_y <- sd(model$model[[1]], na.rm = TRUE)
+      sd_x <- sapply(model$model[-1], function(x) {
+        if (is.numeric(x)) sd(x, na.rm = TRUE) else 1
+      })
+      coefs * sd_x / sd_y
+    }
+    ```
+
+    ```{r}
+    lm.beta(model2)
+    ```
+
+3.  Write up your results in line with the examples provided.
+
+    The overall model was statistically significant, *F*(2, 431) = 17,940, *p* \< .001, and explained 98.8% of the variance in post-training customer service ratings (*R*² = .988), indicating a very strong model fit. Pre-training customer service was the strongest predictor of post-training scores (β = 1.01, *p* \< .001), showing that employees’ scores before training were highly predictive of their scores after training. Training program was also a significant predictor (β = -0.51, *p* \< .001), which suggests that, even after accounting for pre-training scores, employees in the Grant Cardone Program scored lower on post-training customer service ratings than those in the Richardson Program.
+
+4.  Conduct a multiple regression that includes **post-training revenue** as the **Y variable**, and **both,** the **program** factor variable and the **pre** **training revenue** as **X variables.**
+
+    ```{r}
+    model3 <- lm(post.training.revenue ~ program_factor + pre.training.revenue,
+                 data = filtered_data)
+    summary(model3)
+    ```
+
+5.  Compute the standardized beta coefficients for these outcomes (use lm.beta function)
+
+    ```{r}
+    lm.beta(model3)
+    ```
+
+6.  Write up your results in line with the examples provided.
+
+    The overall model was statistically significant, *F*(2, 431) = 196.8, *p* \< .001, and explained 47.7% of the variance in post-training revenue (*R*² = .477). Pre-training revenue was the strongest predictor (β = 0.69, *p* \< .001), indicating that employees who generated more revenue before training also tended to generate more revenue after training. Training program was also a significant predictor (β = -0.22, *p* = .002), showing that even after accounting for pre-training revenue, employees in the Grant Cardone Program earned about \$108,612 less in post-training revenue than those in the Richardson Program. Overall, pre-training revenue was the strongest predictor, but the training program also had a meaningful independent effect on post-training revenue.
+
+7.  Conduct any other multiple or simple linear regression model you would be interested in investigating.
+
+    ```{r}
+    model4 <- lm(post.training.revenue ~ Engage + Knowledge,
+                 data = filtered_data)
+    summary(model4)
+    ```
+
+8.  Compute the standardized beta coefficients for these outcomes (use lm.beta function)
+
+    ```{r}
+    lm.beta(model4)
+    ```
+
+9.  Write up your results in line with the examples provided.
+
+    I chose to conduct a multiple regression to examine whether training engagement and knowledge scores predicted post-training revenue. The overall model was statistically significant, *F*(2, 431) = 10.28, *p* \< .001, but it explained only 4.6% of the variance in post-training revenue (*R*² = .046), suggesting that engagement and knowledge were not especially strong predictors of revenue performance. Knowledge was a significant predictor (β = 0.20, *p* \< .001), indicating that employees who retained more from the training tended to generate higher post-training revenue. Engagement, however, was not a significant predictor (β = 0.05, *p* = .340), suggesting that finding the training engaging did not necessarily lead to better sales performance.
+
+10. What made you interested in that comparison?
+
+    I was curios to explore how engaged an employee felt during the training and how much they actually learned would be an indicator for their post-training revenue. The results supported the idea that employees who were more interested in the training content would perform better on the job.
+
+## Section 9 - Summary
+
+1.  What additional data would you have liked to collect to evaluate this training program (think about the categories from the training slides). Keep in mind that although this was done with all sales associates, going forward the program would be part of the onboarding process.
+
+    It would also have been helpful to collect supervisor performance ratings after the training to see whether managers noticed the same improvements reflected in the revenue data. Retention data would have added value as well, since a program that increases short-term sales but results in higher turnover may not be worthwhile in the long run. Looking ahead, if this training becomes part of onboarding, tracking time-to-productivity for new hires would provide a more complete picture than relying on a single post-training measure.
+
+2.  Based on what you found in your current analyses, which program would you recommend? Justify your recommendation using complete sentences.
+
+    Based on the analyses, I would recommend the Richardson Program. The *t*-test and regression results suggest that it led to stronger post-training revenue outcomes, and employees in that group also had higher average knowledge scores. Although the Grant Cardone Program received higher engagement ratings, engagement by itself did not appear to translate into better performance. Because the main goal of the training is to improve sales, the Richardson Program appears to be the better choice based on the data.
+
+## Feedback and Points of Difficulty
+
+Now that you've completed the activity (or if you were unable to complete the activity), please provide any feedback regarding a) what resources you found most helpful for completing the activity, b) what parts of the activity were most challenging, and c) if any set of instructions were unclear. I appreciate your feedback as I work to continually improve these activities for future sections of the course. Thank you!
