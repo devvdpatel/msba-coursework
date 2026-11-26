@@ -1,0 +1,179 @@
+---
+title: "Activity 3 - Descriptive Statistics in R"
+author: "Dev Patel"
+date: 4/21/2026
+execute:
+  echo: false
+  warning: false
+  message: false
+format: 
+  pdf:
+    toc: true
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+# Overview
+
+In this activity you will first load .csv files into your global environment, merge them, and compute a series of descriptive statistics. Last, you will compare the group averages using T-Tests. This material is covered in Chapter 23 through Chapter 25 of your textbook, as well as the tutorial video and .QMD file for this week.
+
+## Section 1 - Load Packages & Read in .csv Files
+
+1.  In this activity, you will need to use the tidyverse, and lessR packages. Write and run the code below to load all three packages from your library. Note, if you have not installed any packages, you will first need to use the install.packages() function to install those packages.
+
+    ```{r}
+    library(tidyverse)
+    library(lessR)
+
+    ```
+
+2.  Write and run the code to create two dataframes, one for each csv file using the read_csv() function (the HR and Sales.csv file and the Training Data 2.csv file).
+
+    ```{r}
+    hr_sales <- read_csv("HR and Sales.csv", name_repair = "universal")
+    training  <- read_csv("Training Data 2.csv", name_repair = "universal")
+    ```
+
+3.  Use the names() function to print the column names from each dataframe into your console.
+
+    ```{r}
+    names(hr_sales)
+    names(training)
+    ```
+
+## Section 2 - Joining data files
+
+The next step is to join the two dataframes together. Note, if you have not done so already, you will need to load the dplyr package using the library() function to complete this section.
+
+1.  Use the left_join() function to create a third dataframe. The new dataframe should contain the data from both csv files. **Note**, whichever dataframe you include first, those columns will appear first in the merged file, but the column order does not matter for our purposes.
+
+    ```{r}
+    merged_data <- left_join(hr_sales, training, by = "ID")
+    ```
+
+2.  Use the names() function to see the names of the newly created dataframe.
+
+    ```{r}
+    names(merged_data)
+    ```
+
+## Section 3 - Factors
+
+In this section you will create 2 factors based on existing variables. **Note**, for ease of use, I suggest that your new factors be created using a [**different name**]{.underline} from the name in the original dataframe. This means that each of the next 2 steps should add a column to your dataframe.
+
+1.  Create a factor for the **program** variable with two levels. The levels should be set using the same labels already in the dataset. The labels are 1 = "Richardson Program" and 2 = "Grant Cardone Program".
+
+    ```{r}
+    merged_data <- merged_data %>%
+      mutate(program_factor = factor(program,
+                                     levels = c(1, 2),
+                                     labels = c("Richardson Program",
+                                                "Grant Cardone Program")))
+    ```
+
+2.  Create a factor for the **sex** variable with two levels. The new labels should be set as M = Male and F = Female.
+
+    ```{r}
+    merged_data <- merged_data %>%
+      mutate(sex_factor = factor(sex,
+                                 levels = c("M", "F"),
+                                 labels = c("Male", "Female")))
+    ```
+
+3.  Use the str() function to check the structure of each factor variable you created.
+
+    ```{r}
+    str(merged_data$program_factor)
+    str(merged_data$sex_factor)
+    ```
+
+## Section 4 - Filter Data
+
+Currently, the data includes employees with a large range of tenure. Stakeholders want to compare the effect of the training for only employees that have been at the organization for at least 31 days. Their rationale is that for the first two weeks sales associates complete the training program and shadow an experienced sales person. It isn't until the second month of employment that they are expected to be fully up to speed.
+
+1.  Create a new dataframe that includes only employees with 31 or more days of tenure. This is the data frame you will use for the remainder of the activity.
+
+    ```{r}
+    filtered_data <- merged_data %>%
+      filter(tenure.days >= 31)
+    ```
+
+## Section 5 - Counts
+
+In the tutorial file and textbook, multiple methods are shown for how to compute counts. You can use whichever method you choose for these steps.
+
+1.  Run the code that will return the count for each training program.
+
+    ```{r}
+    table(filtered_data$program_factor)
+    ```
+
+2.  Type in how many employees completed each training program.
+
+    Employees that completed the Richardson Program = 229
+
+    Employees that completed the Grant Cardone Program = 205.
+
+3.  Run the code that will return the count for employees based on sex and training program (e.g., 4 groups total).
+
+    ```{r}
+    table(filtered_data$sex_factor, filtered_data$program_factor)
+    ```
+
+4.  Type in how many employees from each training program were male vs female.
+
+    In the Richardson Program,106 employees were male and 123 were female. In the Grant Cardone Program, 115 employees were male and 90 employees were female.
+
+## Section 6 - Means
+
+1.  Run the code to compute the average tenure for sales associates.
+
+    ```{r}
+    mean(filtered_data$tenure.days, na.rm = TRUE)
+    ```
+
+2.  What is the average tenure for sales associates?
+
+    The average tenure for sales associates is approximately 1080.5 days.
+
+## Section 7 - Grouped Means and SDs
+
+The primary question that you want to answer is how the employees did based on the training program they went through. Compute the following means and standard deviations, separated by which training program was completed. **Note, you should use the factor you created, not the original program variable.**
+
+1.  Compute the means and standard deviations for the following: 1) how engaging the training program was, 2) pre-training revenue, 3) post training revenue, 4) pre-training customer service, and 5) post-training customer service separated **by training group**. Note, this can all be done in one code chunk using the summarize() and group_by functions. However, you could compute these using a different method if you prefer.
+
+    ```{r}
+    filtered_data %>%
+      group_by(program_factor) %>%
+      summarize(
+        mean_engage       = mean(engage, na.rm = TRUE),
+        sd_engage         = sd(engage, na.rm = TRUE),
+        mean_pre_revenue  = mean(pre.training.revenue, na.rm = TRUE),
+        sd_pre_revenue    = sd(pre.training.revenue, na.rm = TRUE),
+        mean_post_revenue = mean(post.training.revenue, na.rm = TRUE),
+        sd_post_revenue   = sd(post.training.revenue, na.rm = TRUE),
+        mean_pre_cust     = mean(pre.customer.rating, na.rm = TRUE),
+        sd_pre_cust       = sd(pre.customer.rating, na.rm = TRUE),
+        mean_post_cust    = mean(post.customer.rating, na.rm = TRUE),
+        sd_post_cust      = sd(post.customer.rating, na.rm = TRUE)
+      )
+    ```
+
+## Section 7 - Interpretation
+
+1.  What additional data would you have liked to collect to evaluate this training program (think about the 8 categories listed on the slides). Keep in mind that although this was done with all sales associates, going forward the program would be part of the onboarding process.
+
+    It would be helpful to to collect ratings from managers/supervisors to see if they noticed any improvements in the employees or not. Employee retention data would also be useful since a program that boosts sales but leads to employee dissatisfaction is not really a success.
+
+2.  Based on what we have looked at so far (just the descriptive statistics), what would you say about the effectiveness of each program?
+
+    Both programs show an increase in revenue from pre to post training, so the programs are clearly beneficial in both cases. Customer service scores barely moved for either group though, so neither program seems to have much impact there.
+
+3.  Based on what you found in your current analyses, which program would you recommend? Justify your recommendation in 2-3 sentences.
+
+    I would recommend the Richardson Program because the post-training revenue numbers and knowledge scores came out stronger on average. The goal of training is better performance, and Richardson seems to have the edge there even if employees found it slightly less engaging.
+
+## Feedback and Points of Difficulty
+
+Now that you've completed the activity (or if you were unable to complete the activity), please provide any feedback regarding a) what resources you found most helpful for completing the activity, b) what parts of the activity were most challenging, and c) if any set of instructions were unclear. I appreciate your feedback as I work to continually improve these activities for future sections of the course. Thank you!
